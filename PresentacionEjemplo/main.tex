@@ -1,0 +1,42 @@
+\documentclass[t]{beamer}  
+\usetheme{Berkeley}                 
+\usecolortheme{solarized}
+\setbeamertemplate{navigation symbols}{} %sin simbolos de navegacion
+
+
+\usepackage{ragged2e}
+\justifying
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+%Esto arregla unos conflictos por usar babel
+\renewcommand\shorthandsspanish{} 
+
+\setbeamertemplate{footline}[frame number]
+
+
+\logo{\includegraphics[height=1.7cm]{logo.png}}
+
+\title{TITULO}
+\subtitle{SUBTITULO}
+\author{Felipe Garay}
+\institute{USACH}
+\date{FECHA}
+
+% more preamble...
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+%Temas a tratar
+\begin{frame}
+\frametitle{Temas a tratar}
+\tableofcontents
+\end{frame}
+
+\input{"talk.tex"}
+
+\end{document}
