@@ -1,5 +1,15 @@
 # Informes TBD 2015-1
 
+Informes y Presentaciones del Grupo 3:
+
+* Gerson Aguirre
+* Max Chacón
+* Daniel Gacitúa
+* Elías González
+* Nicolás Rozas
+
+## Preludio
+
 Ya que está estipulado en los requisitos del curso el tener los Informes y Presentaciones con control de versiones, lo más sano y recomendable es hacerlos en LaTeX, para facilitar el formateo y uniformidad de la documentación (además de ser multiplataforma).
 
 ## Método de trabajo
@@ -17,13 +27,15 @@ Los paquetes necesarios para compilar los Informes y Presentaciones son los sigu
 * TeXLive
 * TeXLive Idioma Español
 * pdflatex
+* biblatex
+* biber
 * pandoc
 * beamer
 * latexmk
 
 Para usuarios de Ubuntu y Debian, con el siguiente comando instalan las dependencias necesarias:
 
-	sudo apt-get install texlive texlive-latex-recommended texlive-lang-spanish pandoc latexmk
+	sudo apt-get install texlive texlive-latex-recommended texlive-bibtex-extra texlive-lang-spanish biber pandoc latexmk
 
 NOTA: Son como 350MB en paquetes, así que tengan paciencia.
 
