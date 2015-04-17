@@ -353,8 +353,32 @@ Se ha identificado solamente un actor que interactúa con el sistema utilizando 
   
 
 %-------------------------------------------------------------------------------------
-\capitulo{DIAGRAMA DE CLASES DE ANÁLISIS.}
+\capitulo{MODELO DE CLASES DE ANÁLISIS.}
 
+\seccion{DIAGRAMA DE CLASES.}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=17cm]{DiagramaDeClases.jpg}
+\caption{Diagrama de Clases}
+\end{figure}
+
+
+\seccion{CLASES.}
+
+Como se puede apreciar en la imagen x, el diagrama de clases consta de nueve clases necesarias para la implementación de la aplicación, las cuales serán explicadas a continuación:
+
+\begin{itemize}
+    \item \textbf{Usuario}: Debido a que la aplicación será utilizada por usuarios, los cuales poseerán una cuenta para la identificación de éste, es por eso que deberá contener los atributos necesarios. 
+    \item \textbf{Álbum}: Ya que la aplicación contendrá imágenes, estás podrán ser almacenadas en álbumes, donde en el cual tendrá un nombre, cierta cantidad de fotos y la fecha de creación. (solo si es necesario implementarlo).
+    \item \textbf{Mapa}: Debido a que cada imagen tendrá una ubicación de subida, es posible ubicarla dentro de un mapa.
+    \item \textbf{Comentario}: Cada imagen en la aplicación podrá tener comentarios que pueden ser hechos por la misma persona que la subió o por alguna persona dentro de sus círculo de amigos, además estos serán clasificados en la escala positivo, negativo o neutral.
+    \item \textbf{Fotografía}: Esta clase es la principal, debido a que es a lo que la aplicación está enfocada, estas podrán ser subidas en la aplicación por los distintos usuarios ya mencionados.
+    \item \textbf{Tag}: En la aplicación será posible la utilización de ciertos tag a disposición de los usuarios, donde podrán ser utilizados para hacer referencia común en ciertas imágenes que los estos deseen.
+    \item \textbf{Clasificador}: Como ya se menciona anteriormente los comentarios serán clasificados en una escala, esta clase será la encargada de realizar estas clasificaciones según un análisis del comentario realizado.
+    \item \textbf{Cámara}: Dentro de la aplicación se maneja cierta información de las cámaras que han sacado ciertas fotos, esta clase será la encargada de extraer cierta información.
+    \item \textbf{Buscador}: Entre las funcionalidades de la aplicación está la búsqueda de usuarios y fotos, esta clase es la encargada de que esta funcionalidad sea realizada.   
+\end{itemize}
 
 
 %-------------------------------------------------------------------------------------
@@ -363,8 +387,73 @@ Se ha identificado solamente un actor que interactúa con el sistema utilizando 
 %-------------------------------------------------------------------------------------
 \capitulo{BASE DE DATOS.}
 
+\seccion{MODELO DE BASE DE DATOS.}
+
+\seccion{ENTIDADES Y ATRIBUTOS.}
+
 %-------------------------------------------------------------------------------------
 \capitulo{GESTIÓN DEL PROYECTO.}
+
+\seccion{DEFINICIÓN DE ROLES.}
+
+
+- \textbf{Elías González Marincovic}:Encargado de la funcionalidad lógica de la aplicación utilizando servicios propios de Java EE, JavaRestfull y encargado de la intercomunicación de los diversos componentes del sistema.\\
+
+- \textbf{Nicolas Rozas Sepúlveda}: Es el especialista en Base de datos, será el encargado de utilizar las herramientas y administrar la base de datos relacional (distribuir, poblar tablas, etc), utilizando las tecnologías, MySql y en diseño MySql Workbench u otras.\\
+
+- \textbf{Daniel Gacitúa Vásquez}: Encargado de la interfaz web que poseerá la aplicación, la cual debe  facilitar las consultas que los usuarios deseen realizar al servidor de aplicaciones mediante una interfaz adecuada, utilizando una presentación correcta para la funcionalidad que se le dará a BitPhoto. Para esto se utilizará AngularJS y HTML5.\\
+
+- \textbf{Gerson Aguirre Pavez}: Encargado de realizar el buscador, utilizando la herramienta Apache Lucene junto con la aplicación de índices invertidos para la indexación de datos.\\
+
+- \textbf{Max Chacón Villanueva}: Encargado de la aplicación móvil. Estará a cargo de posibilitar el uso de BitPhoto en dispositivos android.\\
+
+
+Cabe destacar que se asignaron compañeros de apoyo para los diversos roles.
+
+\begin{itemize}
+	\item \textbf{Base de Datos}:  Encargado Nicolas -> Soporte Elías.
+	\item \textbf{AppWeb}: Encargado Daniel -> Soporte Nicolás.
+	\item \textbf{Java Rest}: Encargado Elías - > Soporte Gerson.
+	\item \textbf{AppMovil}: Encargado Max -> Soporte Daniel.
+	\item \textbf{Buscador}: Encargado Gerson -> Soporte Max.\\
+\end{itemize}
+
+También es importante señalar que todos los miembros del Grupo de trabajo estarán encargados de asegurar la calidad del producto (Aplicación "BitPhoto"), es decir todos son responsables de la revisión de todos los procesos y tareas que se realicen, además de velar porque se cumplan los resultados que se esperan y que se realice todo de manera correcta.\\
+
+\seccion{DEFINICIÓN DE HERRAMIENTAS.}
+
+
+
+\seccion{ORGANIZACIÓN DE REPOSITORIOS GIT.}
     
+Para optimizar la creación de código, favorecer la correcta colaboración entre los integrantes y tener un versionamiento ordenado del código, se decide emplear a git como sistema de control de versiones, y usar GitHub como servidor remoto de git.\\
+
+Cada miembro del grupo utiliza una cuenta de GitHub:
+
+\begin{itemize}
+	\item \textbf{Gerson Aguirre}: \textsl{https://github.com/GersonAguirre}
+	\item \textbf{Max Chacón}: \textsl{https://github.com/nanochacon}
+	\item \textbf{Daniel Gacitúa}: \textsl{https://github.com/GaciX}
+	\item \textbf{Elías González}: \textsl{https://github.com/Elitos}
+	\item \textbf{Nicolás Rozas}: \textsl{https://github.com/NicoRozas}
+\end{itemize}
+
+Se ha creado la organización “tbd2015” que aloja todos los repositorios del proyecto: \textsl{https://github.com/tbd2015}.\\
+
+Dentro de la organización, se han creado diferentes repositorios para cada módulo del proyecto:
+
+\begin{itemize}
+	\item \textbf{InformesTBD}: Contiene los informes y presentaciones del proyecto. 
+	\item \textbf{Prototipo}: Contiene el prototipo gráfico de la Aplicación Web.
+	\item \textbf{BitPhoto}: Contiene el módulo principal del proyecto (en Java EE).
+	\item \textbf{BitPhoto-Mobile}: Contiene la aplicación para Android del proyecto.
+	\item \textbf{BitPhoto-Search}: Contiene el motor de búsqueda (potenciado por Apache Lucene).
+	\item \textbf{BitPhoto-Miner}: Contiene el módulo de análisis de sentimientos (potenciado por Weka).
+\end{itemize}
+
+Cada miembro del grupo tendrá acceso a todos los repositorios para fomentar la colaboración. Cabe destacar que con un sistema modular de repositorios dentro de la organización ordena de mejor manera los aportes de cada miembro y ayuda a evitar el entorpecimiento al hacer commits de forma concurrente.
+
+\capitulo{CONCLUSIONES.}
+
 
 \end{document}
