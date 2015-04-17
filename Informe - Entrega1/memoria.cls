@@ -173,7 +173,7 @@
 
         \setcounter{tocdepth}{3}
 
-        \renewcommand{\contentsname}{\textbf{TABLA DE CONTENIDOS}}
+        \renewcommand{\contentsname}{\textbf{TABLA DE CONTENIDOS.}}
         \tableofcontents
         \thispagestyle{fancy}
 
@@ -181,8 +181,8 @@
 
         \renewcommand{\cftfigdotsep}{\cftdotsep}
 
-        \renewcommand*\listfigurename{\textbf{ÍNDICE DE FIGURAS}}
-        \addcontentsline{toc}{chapter}{ÍNDICE DE FIGURAS}
+        \renewcommand*\listfigurename{\textbf{ÍNDICE DE FIGURAS.}}
+        \addcontentsline{toc}{chapter}{ÍNDICE DE FIGURAS.}
         \listoffigures
         \thispagestyle{fancy}
 
@@ -191,8 +191,8 @@
 
         \renewcommand{\cfttabdotsep}{\cftdotsep}
 
-        \renewcommand*\listtablename{\textbf{ÍNDICE DE CUADROS}}
-        \addcontentsline{toc}{chapter}{ÍNDICE DE CUADROS}
+        \renewcommand*\listtablename{\textbf{ÍNDICE DE CUADROS.}}
+        \addcontentsline{toc}{chapter}{ÍNDICE DE CUADROS.}
         \listoftables
 
         \thispagestyle{fancy}
@@ -376,3 +376,40 @@
 }
 
 \renewcommand{\baselinestretch}{1.5} %interlineado 1.5
+
+
+% Genera un capitulo no numerado, equivalente a \chapter*
+% Argumentos: {Titulo del capitulo}
+\newcommand{\capitulonn}[1]{
+ 
+       \paginablanco
+       
+       \fontsize{16}{19}
+       \fontfamily{ptm} %new times roman
+        \selectfont
+ 
+        \noindent\textbf{\hspace{0.2cm}\uppercase{#1}}
+       
+ 
+       \addcontentsline{toc}{chapter}{\uppercase{#1}}
+ 
+       \renewcommand{\nombrecaptitulo}{\uppercase{#1}}
+ 
+       \thispagestyle{empty}
+ 
+        % para que muestre el nombre del capitulo en el heading
+        \toggletrue{mostrarcapitulo}
+ 
+        %resetamos los counters
+        \setcounter{figure}{0}
+       \setcounter{table}{0}
+       \setcounter{section}{0}
+       \setcounter{equation}{0}
+       \setcounter{subsection}{0}
+ 
+ 
+        % fuente estándar para el texto
+        \fontsize{10}{11}
+       \fontfamily{ptm} %new times roman
+        \selectfont
+}
