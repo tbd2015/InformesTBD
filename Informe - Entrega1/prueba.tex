@@ -41,11 +41,11 @@ Antes de pasar a definir lo que es un diagrama de casos de usos, se debe compren
 
 Luego de ya entender lo que es un caso de uso, se procede a realizar la descripción de qué es un diagrama de casos de usos. Se debe partir por definir que este diagrama es de comportamiento UML, en este diagrama se deben definir los actores y casos de usos, donde se relacionan entre sí, para dar a entender la idea de que un actor realizará cierto caso de uso, es decir, este último es considerado una actividad a realizar por cierto actor. Para mayor entendimiento se muestra a continuación como debe ser un diagrama de casos de uso:\\
 
-\begin{figure}[hbtp]
- \centering
- \includegraphics[width=10cm]{MarcoTeorico.jpg}
- \caption{Ejemplo relación Actores/Casos de uso}
- \end{figure}
+\figura{Ejemplo relación Actores/Casos de Uso}{
+	\includegraphics[width=10cm]{MarcoTeorico.jpg}
+}
+
+
  
 \seccion{DIAGRAMA DE CLASES.}
 
@@ -354,39 +354,31 @@ Los casos de uso que se pueden identificar a partir de los requerimientos funcio
     \item Interactuando con fotografías cargadas.
 \end{enumerate}
 \newpage
+
 \seccion{DIAGRAMA DE CASOS DE USO.}
 
 Se ha identificado solamente un actor que interactúa con el sistema utilizando las funcionalidades que se han especificado anteriormente. El usuario de la aplicación se ha denominado "Usuario BitPhoto", y el modelo de casos de uso se presenta a continuación:\\
 
-\begin{figure}[hbtp]
- \centering
- \includegraphics[width=15cm]{DiagramaDeCasosDeUso.jpg}
- \caption{Diagrama de Casos de Uso completo.}
- \end{figure}
-  
+\figura{Diagrama de Casos de Uso (completo)}{
+	\includegraphics[width=15cm]{DiagramaDeCasosDeUso.jpg}
+}
 
 %-------------------------------------------------------------------------------------
 \capitulo{MODELO DE CLASES DE ANÁLISIS.}
 
 \seccion{DIAGRAMA DE CLASES.}
 
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=17cm]{DiagramaDeClases.jpg}
-\caption{Diagrama de Clases completo.}
-\end{figure}
+\figura{Diagrama de Clases (completo)}{
+	\includegraphics[width=15cm]{DiagramaDeClases.jpg}
+}
 
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=17cm]{DiagramaDeClases2.jpg}
-\caption{Diagrama de Clases sección 1.}
-\end{figure}
+\figura{Diagrama de Clases (sección 1)}{
+	\includegraphics[width=15cm]{DiagramaDeClases2.jpg}
+}
 
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=17cm]{DiagramaDeClases3.jpg}
-\caption{Diagrama de Clases sección 2.}
-\end{figure}
+\figura{Diagrama de Clases (sección 2)}{
+	\includegraphics[width=15cm]{DiagramaDeClases3.jpg}
+}
 
 \newpage
 
@@ -416,11 +408,101 @@ Como se puede apreciar en la imagen x, el diagrama de clases consta de nueve cla
 %-------------------------------------------------------------------------------------
 \capitulo{PROTOTIPO DE INTERFAZ DE USUARIO.}
 
+Para tener una idea de la plataforma a desarrollar, se generó un Prototipo de Interfaz de Usuario que permitiese tener una idea de cómo luciría la interfaz web de la aplicación, y así recolectar información importante que ayudará a la etapa del diseño de la aplicación. A continuación se hará una descripiciónn breve de las vistas más relevantes, junto con una representación gráfica de éstas.
+
+\seccion{VISTAS DE INICIO.}
+
+En la vista de inicio se ve la peresntación sencilla de la web de BitPhoto, potenciada por HTML5 y estilizada con los elementos de Bootstrap.
+\figura{Vista Inicio}{
+	\includegraphics[width=14cm]{proto/01.jpg}
+}
+
+El formulario de registro muestra un estilo claro y sencillo.
+\figura{Vista Registro}{
+	\includegraphics[width=14cm]{proto/02.jpg}
+}
+
+\newpage
+
+El formulario de acceso a la plataforma (login) se ha dispuesto como un submenú por claridad y agilidad de acceso.
+\figura{Vista Login}{
+	\includegraphics[width=14cm]{proto/03.jpg}
+}
+
+\newpage
+
+\seccion{VISTAS DE USUARIO.}
+
+La sección Home al hacer login en la plataforma muestra fotos destacadas de los usuarios de la plataforma, junto con información del sitio. Nótese que algunos elementos (como la cabecera y el pie de página) fueron diseñados como vistas HTML independientes, y son cargadas dentro de una vista base via jQuery (esto favorece la rapidez de edición de las vistas).
+\figura{Vista Home}{
+	\includegraphics[width=14cm]{proto/04.jpg}
+}
+
+Todos los menús y submenús del programa están basados en elementos de Bootstrap.
+\figura{Vista Submenú}{
+	\includegraphics[width=14cm]{proto/05.jpg}
+}
+
+\newpage
+
+La vista de Photostream (al igual que la de Album y Favorites), muestra el nombre del usuario, su apodo, su avatar y una galería de imágenes acorde al contenido de la vista seleccionada.
+\figura{Vistas Photstream, Álbumes y Favoritas}{
+	\includegraphics[width=14cm]{proto/06.jpg}
+}
+
+La vista Camera Roll permite visualizar las imágenes por intervalos de tiempo. Las imágenes de las vistas serán cargadas a futuro desde la base de datos y serán mostradas con el layout siguiente.
+\figura{Vista Camera Roll}{
+	\includegraphics[width=14cm]{proto/07.jpg}
+}
+
+\newpage
+
+Las vistas de Mapa no se han implementado en este prototipo, pero se ha dejado el espacio para que sean desarrolladas a futuro.
+\figura{Vistas Map y World Map}{
+	\includegraphics[width=14cm]{proto/08.jpg}
+}
+
+La vista de Actividad Reciente muestra las últimas acciones de los seguidos por un usuario, esta vista se elaboró con elementos sencillos para su fácil lectura.
+\figura{Vista Recent Activity}{
+	\includegraphics[width=14cm]{proto/09.jpg}
+}
+
+\newpage
+
+En la vista Photos from/of se escogió un diseño en grilla sencillo para las imágenes. Nótese que todas las vistas de imágenes del sitio usan clases de diseño adaptativas al tamaño de la pantalla del dispositivo, potenciadas por la tecnología de Bootstrap.
+\figura{Vistas Photos From y Photos Of}{
+	\includegraphics[width=14cm]{proto/10.jpg}
+}
+
+Vista de imágenes recientes.
+\figura{Vista Recent Photos}{
+	\includegraphics[width=14cm]{proto/11.jpg}
+}
+
+\newpage
+
+La vista Camera Finder permite ver las cámaras más usadas del sitio, dichas estadísticas estarán potenciadas por la base de datos.
+\figura{Vista Camera Finder}{
+	\includegraphics[width=14cm]{proto/12.jpg}
+}
+
+Subir imágenes es tarea sencilla en el sitio, el Uploader presenta un diseño claro y estará potenciado por tecnologías JavaScript.
+\figura{Vista Upload Photo}{
+	\includegraphics[width=14cm]{proto/13.jpg}
+}
+
+\newpage
+
+La búsqueda presenta un diseño similar a los ya vistos en el prototipo, pero agrega tabs selectivos que permiten buscar cualquier foto, fotos propias o de amigos.
+\figura{Vista Search}{
+	\includegraphics[width=14cm]{proto/14.jpg}
+}
+
+
 %-------------------------------------------------------------------------------------
 \capitulo{GESTIÓN DEL PROYECTO.}
 
 \seccion{DEFINICIÓN DE ROLES.}
-
 
 - \textbf{Elías González Marincovic}: Encargado de la funcionalidad lógica de la aplicación utilizando servicios propios de Java EE, JavaRestfull y encargado de la intercomunicación de los diversos componentes del sistema.\\
 
@@ -453,55 +535,40 @@ A continuación se describe de manera breve y generalizada las tecnologías y he
 
 \subseccion{HERRAMIENTAS BACK-END.}
 
-\textbf{Glassfish Server}
-    Es un servidor de aplicaciones desarrollado por Sun Microsystems, el cual implementa tecnologías definidas para JEE. Es gratuita y de código libre, pero también posee una versión comercial. Posee como servidor base a Sun Java System Application Server de la corporación Oracle. El fin de utilizar Glassfish como servidor de aplicaciones es que permite proporcionar servicios a computadoras clientes, donde los clientes pueden acceder a los datos o conectarse con la parte lógica de la aplicación. Además es compatible con la plataforma JavaEE de esta forma se podrá conectar con JavaEE RESTful.\\
+\textbf{Glassfish Server}: Es un servidor de aplicaciones desarrollado por Sun Microsystems, el cual implementa tecnologías definidas para JEE. Es gratuita y de código libre, pero también posee una versión comercial. Posee como servidor base a Sun Java System Application Server de la corporación Oracle. El fin de utilizar Glassfish como servidor de aplicaciones es que permite proporcionar servicios a computadoras clientes, donde los clientes pueden acceder a los datos o conectarse con la parte lógica de la aplicación. Además es compatible con la plataforma JavaEE de esta forma se podrá conectar con JavaEE RESTful.\\
 
-\textbf{MySQL Comunity Edition 5.0+}
-Es un sistema que gestiona bases de datos tipo relacional, con capacidad multihilo y multiusuario, desarrollado por Sun Microsystems (MySQL AB), aunque actualmente se desarrolla como software libre, además de poseer una versión comercial. MySQL Comunity Edition es un conjunto de programas que permiten almacenar, modificar y extraer información desde una base de datos, junto con proporcionar herramientas para añadir, borrar, modificar y analizar datos. También cabe destacar que proporciona métodos para mantener la integridad en los datos de la base de datos, controlando el acceso a usuarios, otorgando niveles de permisos para operar sobre la base de datos y recuperar información en caso de ser corrupta mediante una copia de seguridad. Todo lo señalado anteriormente está acompañado y representado mediante una interfaz comoda y facil de utilizar.\\
+\textbf{MySQL Comunity Edition 5.0+}: Es un sistema que gestiona bases de datos tipo relacional, con capacidad multihilo y multiusuario, desarrollado por Sun Microsystems (MySQL AB), aunque actualmente se desarrolla como software libre, además de poseer una versión comercial. MySQL Comunity Edition es un conjunto de programas que permiten almacenar, modificar y extraer información desde una base de datos, junto con proporcionar herramientas para añadir, borrar, modificar y analizar datos. También cabe destacar que proporciona métodos para mantener la integridad en los datos de la base de datos, controlando el acceso a usuarios, otorgando niveles de permisos para operar sobre la base de datos y recuperar información en caso de ser corrupta mediante una copia de seguridad. Todo lo señalado anteriormente está acompañado y representado mediante una interfaz comoda y facil de utilizar.\\
 
-\textbf{Apache Lucene 4.0+}
-Es una API de código abierto, que se agregará como biblioteca al proyecto en Java. Que tiene como fin la búsqueda y recuperacion de informacion, creada por Doug Cutting. Actualmente está apoyado por la fundación de software de Apache y se distribuye bajo la licencia Apache Software License. En este caso se utilizaran sus características de indexado y búsqueda de texto para realizar el buscador de imágenes dentro de BitPhoto. Se basa en el concepto de documentos los cuales poseen determinados campos de texto, permitiendo así trabajar con diferentes formatos de texto.\\
+\textbf{Apache Lucene 4.0+}: Es una API de código abierto, que se agregará como biblioteca al proyecto en Java. Que tiene como fin la búsqueda y recuperacion de informacion, creada por Doug Cutting. Actualmente está apoyado por la fundación de software de Apache y se distribuye bajo la licencia Apache Software License. En este caso se utilizaran sus características de indexado y búsqueda de texto para realizar el buscador de imágenes dentro de BitPhoto. Se basa en el concepto de documentos los cuales poseen determinados campos de texto, permitiendo así trabajar con diferentes formatos de texto.\\
 
-\textbf{Weka 3.5+}
-Es una plataforma de software que se caracteriza por el aprendizaje automático y se utiliza frecuentemente en la minería de datos, es una biblioteca escrita en Java y desarrollada por la Universidad de Waikato. Es un software distribuido bajo la licencia GNU GPL. Consiste en una colección de programas con algoritmos de aprendizaje que se encargan de procesar una serie de datos. Estos algoritmos se utilizan para entregar resultados luego de procesar los datos, mediante tareas de clasificación, regresión, asociación, entre otras. Con este conjunto de software se tiene como objetivo crear un analizador de sentimientos, para lo cual se entrenará un modelo con el fin de determinar los sentimientos de los comentarios que realizan los usuarios de BitPhoto, caracterizando estos como positivo, negativo o neutro.\\
+\textbf{Weka 3.5+}: Es una plataforma de software que se caracteriza por el aprendizaje automático y se utiliza frecuentemente en la minería de datos, es una biblioteca escrita en Java y desarrollada por la Universidad de Waikato. Es un software distribuido bajo la licencia GNU GPL. Consiste en una colección de programas con algoritmos de aprendizaje que se encargan de procesar una serie de datos. Estos algoritmos se utilizan para entregar resultados luego de procesar los datos, mediante tareas de clasificación, regresión, asociación, entre otras. Con este conjunto de software se tiene como objetivo crear un analizador de sentimientos, para lo cual se entrenará un modelo con el fin de determinar los sentimientos de los comentarios que realizan los usuarios de BitPhoto, caracterizando estos como positivo, negativo o neutro.\\
 
-\textbf{Netbeans JavaEE 7.0+}
-Es un entorno de desarrollo libre, creado principalmente para trabajar con el lenguaje Java. Posee una gran compatibilidad con diferentes tecnologías. Es un producto libre, aunque también existe una versión comercial. Para este proyecto se utilizará para realizar la integración entre las partes de nuestro sistema, conectar la base de datos con la lógica de la aplicación, así también con los módulos respectivos al buscador y clasificador, como también servir la aplicación creada.\\
+\textbf{Netbeans JavaEE 7.0+}: Es un entorno de desarrollo libre, creado principalmente para trabajar con el lenguaje Java. Posee una gran compatibilidad con diferentes tecnologías. Es un producto libre, aunque también existe una versión comercial. Para este proyecto se utilizará para realizar la integración entre las partes de nuestro sistema, conectar la base de datos con la lógica de la aplicación, así también con los módulos respectivos al buscador y clasificador, como también servir la aplicación creada.\\
 
 \subseccion{HERRAMIENTAS FRONT-END.}
 
-\textbf{AngularJS 1.3+}
-Es un framework de JavaScript de código abierto, mantenido con el apoyo de google. Tiene como objetivo apoyar la creación de aplicaciones basadas en la capacidad del navegador con un modelo MVC, incluyendo así facilidades para el desarrollo y la prueba del código. El objetivo de utilizar esta herramienta está en desarrollar un esquema de aplicación web basado en rutas, potenciado por el uso de JavaScript y HTML5.\\
+\textbf{AngularJS 1.3+}: Es un framework de JavaScript de código abierto, mantenido con el apoyo de google. Tiene como objetivo apoyar la creación de aplicaciones basadas en la capacidad del navegador con un modelo MVC, incluyendo así facilidades para el desarrollo y la prueba del código. El objetivo de utilizar esta herramienta está en desarrollar un esquema de aplicación web basado en rutas, potenciado por el uso de JavaScript y HTML5.\\
 
-\textbf{Bootstrap 3.3+}
-Es un framework de diseño web, libre y de código abierto, que contiene una colección de herramientas para la creación de sitios web y aplicaciones web . Contiene código predefinido HTML5 y plantillas CSS, para determinar la forma de los botones, textos, características en la navegación entre otras. Lo utilizaremos también para la creación de la interfaz tanto web de BitPhoto con el fin de agilizar el desarrollo de la interfaz, al mismo tiempo que ésta queda con un diseño adaptativo y homogéneo.\\
+\textbf{Bootstrap 3.3+}: Es un framework de diseño web, libre y de código abierto, que contiene una colección de herramientas para la creación de sitios web y aplicaciones web . Contiene código predefinido HTML5 y plantillas CSS, para determinar la forma de los botones, textos, características en la navegación entre otras. Lo utilizaremos también para la creación de la interfaz tanto web de BitPhoto con el fin de agilizar el desarrollo de la interfaz, al mismo tiempo que ésta queda con un diseño adaptativo y homogéneo.\\
 
-\textbf{jQuery 1.x}
-Es una biblioteca de JavaScript, creada en un comienzo por John Resing, esta biblioteca permite simplificar la manera de interactuar entre documentos HTML, manejar eventos, desarrollar animaciones, entre otras cosas. Todo esto complementado con la técnica AJAX para la creación de páginas web. Licencia MIT. jQuery otorgará funcionalidades basadas en JavaScript para la creación de BitPhoto, permitiendo lograr grandes resultados en menos tiempo y menos líneas de código.\\
+\textbf{jQuery 1.x}: Es una biblioteca de JavaScript, creada en un comienzo por John Resing, esta biblioteca permite simplificar la manera de interactuar entre documentos HTML, manejar eventos, desarrollar animaciones, entre otras cosas. Todo esto complementado con la técnica AJAX para la creación de páginas web. Licencia MIT. jQuery otorgará funcionalidades basadas en JavaScript para la creación de BitPhoto, permitiendo lograr grandes resultados en menos tiempo y menos líneas de código.\\
 
-\textbf{HTML5}
-Lenguaje de marcado para la creacion de paginas web. Es un lenguaje estándar que sirve de referencia para la elaboración de sitios web. Para este caso permitirá definir una estructura básica para la interfaz de la aplicación y un código para la definición de contenido web como lo son textos, imágenes, videos, entre otros. En estwe caso se utilizará el último estándar de este lenguaje, que es HTML5.\\
+\textbf{HTML5}: Lenguaje de marcado para la creacion de paginas web. Es un lenguaje estándar que sirve de referencia para la elaboración de sitios web. Para este caso permitirá definir una estructura básica para la interfaz de la aplicación y un código para la definición de contenido web como lo son textos, imágenes, videos, entre otros. En estwe caso se utilizará el último estándar de este lenguaje, que es HTML5.\\
 
-\textbf{CSS3}
-Hojas de estilo en cascada o CSS, lenguaje utilizado para la definición de plantillas web, para formatos HTML o XML. Permite estandarizar el diseño en la creación de aplicaciones web. La utilización de CSS 3, última versión de CSS, permitirá estilizar uniformemente la apariencia de los elementos de la aplicación.\\
+\textbf{CSS3}: Hojas de estilo en cascada o CSS, lenguaje utilizado para la definición de plantillas web, para formatos HTML o XML. Permite estandarizar el diseño en la creación de aplicaciones web. La utilización de CSS 3, última versión de CSS, permitirá estilizar uniformemente la apariencia de los elementos de la aplicación.\\
 
-\textbf{JavaScript 1.8+}
-Lenguaje de programación interpretado, quiere decir que se ejecuta del lado del navegador. Se caracteriza por ser orientado a objetos, basado en prototipos y se imperativo. Para este proyecto nos permitirá mejorar la interfaz de usuario y generar paginas web dinamicas.\\
+\textbf{JavaScript 1.8+}: Lenguaje de programación interpretado, quiere decir que se ejecuta del lado del navegador. Se caracteriza por ser orientado a objetos, basado en prototipos y se imperativo. Para este proyecto nos permitirá mejorar la interfaz de usuario y generar paginas web dinamicas.\\
 
-\textbf{Android SDK 19}
-Sistema Operativo basado en el kernel de Linux, actualmente desarrollado por Google, y utilizado en dispositivos móviles de manera masiva. Para este caso se desarrollará una aplicación compatible con este sistema operativo para que los usuarios de BitPhoto puedan hacer uso de éste a través de sus dispositivos móviles. Para esto se utilizará el SDK versión 19 para compatibilizar la aplicación con todos los dispositivos Android de versión 4.0 en adelante.\\
+\textbf{Android SDK 19}: Sistema Operativo basado en el kernel de Linux, actualmente desarrollado por Google, y utilizado en dispositivos móviles de manera masiva. Para este caso se desarrollará una aplicación compatible con este sistema operativo para que los usuarios de BitPhoto puedan hacer uso de éste a través de sus dispositivos móviles. Para esto se utilizará el SDK versión 19 para compatibilizar la aplicación con todos los dispositivos Android de versión 4.0 en adelante.\\
 
 \subseccion{HERRAMIENTAS USO GENERAL.}
 
-\textbf{Git}
-Es un software que permite controlar las versiones, fue diseñado por Linus Torvalds, con el fin de controlar de manera eficiente y confiable las versiones de archivos de código fuente. El repositorio remoto a utilizar será proporcionado por GitHub el cual entrega espacio para desarrollar el proyecto, y conectar éste con los miembros del equipo de trabajo.\\
+\textbf{Git}: Es un software que permite controlar las versiones, fue diseñado por Linus Torvalds, con el fin de controlar de manera eficiente y confiable las versiones de archivos de código fuente. El repositorio remoto a utilizar será proporcionado por GitHub el cual entrega espacio para desarrollar el proyecto, y conectar éste con los miembros del equipo de trabajo.\\
 
 
-\textbf{Gradle}
-Es una herramienta de automatización de proyecto, se basa en los principios de Apache Ant y Maven. Permite controlar y configurar el proyecto. Utiliza un grafo dirigido para determinar el orden de las tareas que se pueden ejecutar. Para esta entrega se utilizará Gradle para compilar, desplegar, testear y controlar las diferentes dependencias del proyecto.\\
+\textbf{Gradle}: Es una herramienta de automatización de proyecto, se basa en los principios de Apache Ant y Maven. Permite controlar y configurar el proyecto. Utiliza un grafo dirigido para determinar el orden de las tareas que se pueden ejecutar. Para esta entrega se utilizará Gradle para compilar, desplegar, testear y controlar las diferentes dependencias del proyecto.\\
 
-\textbf{JUnit}
-Es un conjunto de bibliotecas creadas para la programación, con el fin de realizar pruebas unitarias sobre diversos componentes de la aplicación, en especial las realizadas en Java. Nos permitirá ejecutar las clases creadas en Java, de manera controlada para evaluar el funcionamiento de los métodos implementados. Entonces en función de algún valor de entrada para la prueba se evalúa el valor retornado. si es el esperado o no. También se utlizará para controlar las pruebas de regresión, para que cuando se modifique el código se pueda corroborar si el nuevo código cumple con los requerimientos anteriores.\\
+\textbf{JUnit}: Es un conjunto de bibliotecas creadas para la programación, con el fin de realizar pruebas unitarias sobre diversos componentes de la aplicación, en especial las realizadas en Java. Nos permitirá ejecutar las clases creadas en Java, de manera controlada para evaluar el funcionamiento de los métodos implementados. Entonces en función de algún valor de entrada para la prueba se evalúa el valor retornado. si es el esperado o no. También se utlizará para controlar las pruebas de regresión, para que cuando se modifique el código se pueda corroborar si el nuevo código cumple con los requerimientos anteriores.\\
 
 \newpage
 
@@ -526,7 +593,7 @@ Dentro de la organización, se han creado diferentes repositorios para cada mód
 \begin{itemize}
 	\item \textbf{InformesTBD}: Contiene los informes y presentaciones del proyecto. 
 	\item \textbf{Prototipo}: Contiene el prototipo gráfico de la Aplicación Web.
-	\item \textbf{BitPhoto}: Contiene el módulo principal del proyecto (en Java EE).
+	\item \textbf{BitPhoto}: Contiene el módulo principal del proyecto (en JavaEE).
 	\item \textbf{BitPhoto-Mobile}: Contiene la aplicación para Android del proyecto.
 	\item \textbf{BitPhoto-Search}: Contiene el motor de búsqueda (potenciado por Apache Lucene).
 	\item \textbf{BitPhoto-Miner}: Contiene el módulo de análisis de sentimientos (potenciado por Weka).
@@ -539,6 +606,17 @@ Cada miembro del grupo tendrá acceso a todos los repositorios para fomentar la 
 
 %-------------------------------------------------------------------------------------
 \capitulonn{OBSERVACIONES.}
+
+\tabla{Observación OBS0}{
+	\begin{tabular}[c]{|l|l|}
+		\hline
+		Número observación & \\ \hline
+		Detalle observación & \\ \hline
+		Acción a realizar & \\ \hline
+		Justificación & \\ \hline
+		Página del Informe & \\ \hline
+	\end{tabular}
+}
 
 
 %-------------------------------------------------------------------------------------
