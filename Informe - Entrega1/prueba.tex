@@ -3,7 +3,7 @@
 
 \begin{document}
 
-\portada{Informe Entrega 1: Ingeniería de Requerimientos}{Gerson Aguirre Pavez\\Max Chacón Villanueva\\Daniel Gacitúa Vásquez\\Elías González Marincovic \\Nicolás Rozas Sepúlveda}{Profesores: Mauricio Marín Caihuán\\Rodrigo Vásquez Fernández \\ Ayudante: José Orellana}{\today}
+\portada{Informe Entrega 1: Ingeniería de Requerimientos}{Gerson Aguirre Pavez\\Max Chacón Villanueva\\Daniel Gacitúa Vásquez\\Elías González Marincovic\\Nicolás Rozas Sepúlveda}{\textbf{Profesores:}\\Mauricio Marín Caihuán\\Rodrigo Vásquez Fernández\\\textbf{Ayudante:\\}José Orellana}{\today}
 
 
 \indices
@@ -81,15 +81,15 @@ Para realizar este trabajo se piden replicar ciertas funcionalidades de las dist
 Para la realización del proyecto se pide conocer y desarrollar el problema con las siguientes tecnologías:
 
 \begin{itemize}
-    \item HTML5 en cojunto con AngularJS.
+    \item HTML5 en conjunto con AngularJS y jQuery.
     \item JavaEE y servicios del tipo RESTful.
-    \item SOAndroid.
-    \item Mysql community edition.
+    \item Sistema Operativo Móvil Android.
+    \item MySQL Community Edition.
     \item Apache Lucene.
     \item Glassfish.
     \item Gradle.
     \item Weka.
-    \item GitHub.
+    \item Git.
     \item Trello.
 \end{itemize}
 
@@ -273,6 +273,7 @@ RF40: El usuario puede ingresar sus datos de registro para iniciar sesión.
 
 RF41: El usuario puede mantener sus sesión iniciada mediante la opción “Recordar sesión”.\\
 
+\newpage
 
 \seccion{REQUERIMIENTOS NO FUNCIONALES.} 
 
@@ -286,25 +287,25 @@ RNF4: La base de datos debe ofrecer soporte a datos geoespaciales.
 
 RNF5: El sitio web del sistema debe utilizar HTML5 para sus vistas.
 
-RNF6: El sistema debe someter a análisis los comentarios de los usuarios del sistema, con el fin de analizar sentimientos (positivo,negativo,neutral) mediante la herramienta WEKA.
+RNF6: El sistema debe someter a análisis los comentarios de los usuarios del sistema, con el fin de analizar sentimientos (positivo,negativo,neutral) mediante la herramienta Weka.
 
 RNF7: El sistema debe implementar un motor de búsqueda mediante la indexación de tags y comentarios, utilizando la  herramienta APACHE Lucene.
 
 RNF8: El sistema debe permitir geolocalizar fotografías.
 
-RNF9: El sistema debe utilizar JEE para la creación del web service de tipo RestFul.
+RNF9: El sistema debe utilizar JavaEE para la creación del web service de tipo RESTful.
 
 RNF10: La aplicación tanto web como móvil tendrá su interfaz en español latino.
 
 RNF11: La aplicación debe poseer un diseño web adaptativo (\textsl{Responsive Web Design}).
 
-RNF12: La aplicación web debe desplegarse en los navegadores web Chrome (versión 35 o superior), Firefox (versión 30 o superior), Opera (versión 20 o superior), Safari(versión 7 o superior), Internet Explorer (versión 9 superior).
+RNF12: La aplicación web debe desplegarse en los navegadores web Chrome (versión 35 o superior), Firefox (versión 30 o superior), Opera (versión 20 o superior), Safari (versión 7 o superior), Internet Explorer (versión 9 superior).
 
 RNF13: La base de datos del sistema debe ser alimentada por medio de la API de Flickr.
 
 RNF14: El sistema debe velar por la privacidad de sus usuarios, el sistema no puede divulgar información que los usuarios no han autorizado.
 
-RNF15: La aplicación Web y Móvil debe permitir identificar en todas sus vistas el nombre o icono de “Bit Photo”.
+RNF15: La aplicación Web y Móvil debe permitir identificar en todas sus vistas el nombre o icono de “BitPhoto”.
 
 RNF16: La aplicación web y móvil debe indicar al usuario en qué instancia se encuentra.
 
@@ -326,7 +327,7 @@ RNF24: La cantidad de fotografías soportadas por álbumes en el sistema será d
 
 RNF25: La aplicación tanto web como móvil deben señalar al usuario las condiciones de privacidad y uso de datos del usuario.
 
-RNF26:La aplicación web debe indicar al usuario que componentes del dispositivo se utilizarán para la aplicación, y debe solicitar permiso para su uso.
+RNF26: La aplicación web debe indicar al usuario que componentes del dispositivo se utilizarán para la aplicación, y debe solicitar permiso para su uso.
 
 %-------------------------------------------------------------------------------------
 \capitulo{CASOS DE USO.} 
@@ -405,10 +406,6 @@ Como se puede apreciar en la imagen x, el diagrama de clases consta de nueve cla
     \item \textbf{Buscador}: Entre las funcionalidades de la aplicación está la búsqueda de usuarios y fotos, esta clase es la encargada de que esta funcionalidad sea realizada.   
 \end{itemize}
 
-
-%-------------------------------------------------------------------------------------
-\capitulo{PROTOTIPO DE INTERFAZ DE USUARIO.}
-
 %-------------------------------------------------------------------------------------
 \capitulo{BASE DE DATOS.}
 
@@ -417,16 +414,19 @@ Como se puede apreciar en la imagen x, el diagrama de clases consta de nueve cla
 \seccion{ENTIDADES Y ATRIBUTOS.}
 
 %-------------------------------------------------------------------------------------
+\capitulo{PROTOTIPO DE INTERFAZ DE USUARIO.}
+
+%-------------------------------------------------------------------------------------
 \capitulo{GESTIÓN DEL PROYECTO.}
 
 \seccion{DEFINICIÓN DE ROLES.}
 
 
-- \textbf{Elías González Marincovic}:Encargado de la funcionalidad lógica de la aplicación utilizando servicios propios de Java EE, JavaRestfull y encargado de la intercomunicación de los diversos componentes del sistema.\\
+- \textbf{Elías González Marincovic}: Encargado de la funcionalidad lógica de la aplicación utilizando servicios propios de Java EE, JavaRestfull y encargado de la intercomunicación de los diversos componentes del sistema.\\
 
-- \textbf{Nicolas Rozas Sepúlveda}: Es el especialista en Base de datos, será el encargado de utilizar las herramientas y administrar la base de datos relacional (distribuir, poblar tablas, etc), utilizando las tecnologías, MySql y en diseño MySql Workbench u otras.\\
+- \textbf{Nicolas Rozas Sepúlveda}: Es el especialista en Base de Datos, será el encargado de utilizar las herramientas y administrar la base de datos relacional (distribuir, poblar tablas, etc), utilizando las tecnologías, MySQL y en diseño Sybase PowerDesigner u otras.\\
 
-- \textbf{Daniel Gacitúa Vásquez}: Encargado de la interfaz web que poseerá la aplicación, la cual debe  facilitar las consultas que los usuarios deseen realizar al servidor de aplicaciones mediante una interfaz adecuada, utilizando una presentación correcta para la funcionalidad que se le dará a "BitPhoto". Para esto se utilizará AngularJS y HTML5.\\
+- \textbf{Daniel Gacitúa Vásquez}: Encargado de la interfaz web que poseerá la aplicación, la cual debe  facilitar las consultas que los usuarios deseen realizar al servidor de aplicaciones mediante una interfaz adecuada, utilizando una presentación correcta para la funcionalidad que se le dará a "BitPhoto". Para esto se utilizará AngularJS, jQuery y HTML5.\\
 
 - \textbf{Gerson Aguirre Pavez}: Encargado de realizar el buscador, parte importante de las vistas que se solicitan, utilizando la herramienta Apache Lucene junto con la aplicación de índices invertidos para la indexación de datos.\\
 
@@ -436,18 +436,74 @@ Como se puede apreciar en la imagen x, el diagrama de clases consta de nueve cla
 Cabe destacar que se asignaron compañeros de apoyo para los diversos roles, quedando la organización de la siguiente manera:
 
 \begin{itemize}
-	\item \textbf{Base de Datos}:  Encargado Nicolas -> Soporte Elías.
-	\item \textbf{AppWeb}: Encargado Daniel -> Soporte Nicolás.
-	\item \textbf{Java Rest}: Encargado Elías - > Soporte Gerson.
-	\item \textbf{AppMovil}: Encargado Max -> Soporte Daniel.
-	\item \textbf{Buscador}: Encargado Gerson -> Soporte Max.\\
+	\item \textbf{Base de Datos}: Encargado Nicolas - Soporte Elías.
+	\item \textbf{Aplicación Web}: Encargado Daniel - Soporte Nicolás.
+	\item \textbf{Java Rest}: Encargado Elías - Soporte Gerson.
+	\item \textbf{Aplicación Móvil}: Encargado Max - Soporte Daniel.
+	\item \textbf{Buscador}: Encargado Gerson - Soporte Max.
 \end{itemize}
 
-También es importante señalar que todos los miembros del Grupo de trabajo estarán encargados de asegurar la calidad del producto (aplicación "BitPhoto"), es decir todos son responsables de la revisión de todos los procesos y tareas que se realicen, además de velar porque se cumplan los resultados que se esperan y que se realice todo de manera correcta.\\
+También es importante señalar que todos los miembros del Grupo de trabajo estarán encargados de asegurar la calidad del producto (aplicación "BitPhoto"), es decir todos son responsables de la revisión de todos los procesos y tareas que se realicen, además de velar porque se cumplan los resultados que se esperan y que se realice todo de manera correcta.
+
+\newpage
 
 \seccion{DEFINICIÓN DE HERRAMIENTAS.}
 
+A continuación se describe de manera breve y generalizada las tecnologías y herramientas a utilizar para el desarrollo de BitPhoto, para lo cual se han divididoen tres categorías asociadas al sistema a desarrollar, como lo es el Back-End (asociada a la lógica del negocio o lógica de la aplicación), el Front-End (que hace referencia a la parte del sistema que interactúa directamente con el usuario del sistema) y de uso generalizado para el desarrollo del proyecto.  Cabe destacar que las herramientas utilizadas se escogieron con el fin de lograr los requisitos planteados anteriormente.\\
 
+\subseccion{HERRAMIENTAS BACK-END.}
+
+\textbf{Glassfish Server}
+    Es un servidor de aplicaciones desarrollado por Sun Microsystems, el cual implementa tecnologías definidas para JEE. Es gratuita y de código libre, pero también posee una versión comercial. Posee como servidor base a Sun Java System Application Server de la corporación Oracle. El fin de utilizar Glassfish como servidor de aplicaciones es que permite proporcionar servicios a computadoras clientes, donde los clientes pueden acceder a los datos o conectarse con la parte lógica de la aplicación. Además es compatible con la plataforma JavaEE de esta forma se podrá conectar con JavaEE RESTful.\\
+
+\textbf{MySQL Comunity Edition 5.0+}
+Es un sistema que gestiona bases de datos tipo relacional, con capacidad multihilo y multiusuario, desarrollado por Sun Microsystems (MySQL AB), aunque actualmente se desarrolla como software libre, además de poseer una versión comercial. MySQL Comunity Edition es un conjunto de programas que permiten almacenar, modificar y extraer información desde una base de datos, junto con proporcionar herramientas para añadir, borrar, modificar y analizar datos. También cabe destacar que proporciona métodos para mantener la integridad en los datos de la base de datos, controlando el acceso a usuarios, otorgando niveles de permisos para operar sobre la base de datos y recuperar información en caso de ser corrupta mediante una copia de seguridad. Todo lo señalado anteriormente está acompañado y representado mediante una interfaz comoda y facil de utilizar.\\
+
+\textbf{Apache Lucene 4.0+}
+Es una API de código abierto, que se agregará como biblioteca al proyecto en Java. Que tiene como fin la búsqueda y recuperacion de informacion, creada por Doug Cutting. Actualmente está apoyado por la fundación de software de Apache y se distribuye bajo la licencia Apache Software License. En este caso se utilizaran sus características de indexado y búsqueda de texto para realizar el buscador de imágenes dentro de BitPhoto. Se basa en el concepto de documentos los cuales poseen determinados campos de texto, permitiendo así trabajar con diferentes formatos de texto.\\
+
+\textbf{Weka 3.5+}
+Es una plataforma de software que se caracteriza por el aprendizaje automático y se utiliza frecuentemente en la minería de datos, es una biblioteca escrita en Java y desarrollada por la Universidad de Waikato. Es un software distribuido bajo la licencia GNU GPL. Consiste en una colección de programas con algoritmos de aprendizaje que se encargan de procesar una serie de datos. Estos algoritmos se utilizan para entregar resultados luego de procesar los datos, mediante tareas de clasificación, regresión, asociación, entre otras. Con este conjunto de software se tiene como objetivo crear un analizador de sentimientos, para lo cual se entrenará un modelo con el fin de determinar los sentimientos de los comentarios que realizan los usuarios de BitPhoto, caracterizando estos como positivo, negativo o neutro.\\
+
+\textbf{Netbeans JavaEE 7.0+}
+Es un entorno de desarrollo libre, creado principalmente para trabajar con el lenguaje Java. Posee una gran compatibilidad con diferentes tecnologías. Es un producto libre, aunque también existe una versión comercial. Para este proyecto se utilizará para realizar la integración entre las partes de nuestro sistema, conectar la base de datos con la lógica de la aplicación, así también con los módulos respectivos al buscador y clasificador, como también servir la aplicación creada.\\
+
+\subseccion{HERRAMIENTAS FRONT-END.}
+
+\textbf{AngularJS 1.3+}
+Es un framework de JavaScript de código abierto, mantenido con el apoyo de google. Tiene como objetivo apoyar la creación de aplicaciones basadas en la capacidad del navegador con un modelo MVC, incluyendo así facilidades para el desarrollo y la prueba del código. El objetivo de utilizar esta herramienta está en desarrollar un esquema de aplicación web basado en rutas, potenciado por el uso de JavaScript y HTML5.\\
+
+\textbf{Bootstrap 3.3+}
+Es un framework de diseño web, libre y de código abierto, que contiene una colección de herramientas para la creación de sitios web y aplicaciones web . Contiene código predefinido HTML5 y plantillas CSS, para determinar la forma de los botones, textos, características en la navegación entre otras. Lo utilizaremos también para la creación de la interfaz tanto web de BitPhoto con el fin de agilizar el desarrollo de la interfaz, al mismo tiempo que ésta queda con un diseño adaptativo y homogéneo.\\
+
+\textbf{jQuery 1.x}
+Es una biblioteca de JavaScript, creada en un comienzo por John Resing, esta biblioteca permite simplificar la manera de interactuar entre documentos HTML, manejar eventos, desarrollar animaciones, entre otras cosas. Todo esto complementado con la técnica AJAX para la creación de páginas web. Licencia MIT. jQuery otorgará funcionalidades basadas en JavaScript para la creación de BitPhoto, permitiendo lograr grandes resultados en menos tiempo y menos líneas de código.\\
+
+\textbf{HTML5}
+Lenguaje de marcado para la creacion de paginas web. Es un lenguaje estándar que sirve de referencia para la elaboración de sitios web. Para este caso permitirá definir una estructura básica para la interfaz de la aplicación y un código para la definición de contenido web como lo son textos, imágenes, videos, entre otros. En estwe caso se utilizará el último estándar de este lenguaje, que es HTML5.\\
+
+\textbf{CSS3}
+Hojas de estilo en cascada o CSS, lenguaje utilizado para la definición de plantillas web, para formatos HTML o XML. Permite estandarizar el diseño en la creación de aplicaciones web. La utilización de CSS 3, última versión de CSS, permitirá estilizar uniformemente la apariencia de los elementos de la aplicación.\\
+
+\textbf{JavaScript 1.8+}
+Lenguaje de programación interpretado, quiere decir que se ejecuta del lado del navegador. Se caracteriza por ser orientado a objetos, basado en prototipos y se imperativo. Para este proyecto nos permitirá mejorar la interfaz de usuario y generar paginas web dinamicas.\\
+
+\textbf{Android SDK 19}
+Sistema Operativo basado en el kernel de Linux, actualmente desarrollado por Google, y utilizado en dispositivos móviles de manera masiva. Para este caso se desarrollará una aplicación compatible con este sistema operativo para que los usuarios de BitPhoto puedan hacer uso de éste a través de sus dispositivos móviles. Para esto se utilizará el SDK versión 19 para compatibilizar la aplicación con todos los dispositivos Android de versión 4.0 en adelante.\\
+
+\subseccion{HERRAMIENTAS USO GENERAL.}
+
+\textbf{Git}
+Es un software que permite controlar las versiones, fue diseñado por Linus Torvalds, con el fin de controlar de manera eficiente y confiable las versiones de archivos de código fuente. El repositorio remoto a utilizar será proporcionado por GitHub el cual entrega espacio para desarrollar el proyecto, y conectar éste con los miembros del equipo de trabajo.\\
+
+
+\textbf{Gradle}
+Es una herramienta de automatización de proyecto, se basa en los principios de Apache Ant y Maven. Permite controlar y configurar el proyecto. Utiliza un grafo dirigido para determinar el orden de las tareas que se pueden ejecutar. Para esta entrega se utilizará Gradle para compilar, desplegar, testear y controlar las diferentes dependencias del proyecto.\\
+
+\textbf{JUnit}
+Es un conjunto de bibliotecas creadas para la programación, con el fin de realizar pruebas unitarias sobre diversos componentes de la aplicación, en especial las realizadas en Java. Nos permitirá ejecutar las clases creadas en Java, de manera controlada para evaluar el funcionamiento de los métodos implementados. Entonces en función de algún valor de entrada para la prueba se evalúa el valor retornado. si es el esperado o no. También se utlizará para controlar las pruebas de regresión, para que cuando se modifique el código se pueda corroborar si el nuevo código cumple con los requerimientos anteriores.\\
+
+\newpage
 
 \seccion{ORGANIZACIÓN DE REPOSITORIOS GIT.}
     
@@ -480,6 +536,9 @@ Cada miembro del grupo tendrá acceso a todos los repositorios para fomentar la 
 
 %-------------------------------------------------------------------------------------
 \capitulonn{CONCLUSIONES.}
+
+%-------------------------------------------------------------------------------------
+\capitulonn{OBSERVACIONES.}
 
 
 %-------------------------------------------------------------------------------------
