@@ -33,13 +33,13 @@ Con esta entrega se espera tener resuelta la ingeniería de requerimientos, que 
 
 \seccion{BASE DE DATOS RELACIONAL.}
 
-Para mayor entendimiento, se define qué es un modelo relacional, el cual es uno de los más empleados a la hora de realizar una base datos, este es un tipo de modelo donde se puede realizar relaciones entre tablas, las cuales son nombradas como entidades y estas a la vez poseen ciertos atributos, los que a través de dichas relaciones se logra una conexión de estos, para a su vez rescatar la mayor información posible de la base de datos.\\
+Para mayor entendimiento, se define qué es un modelo relacional, el cual es uno de los más empleados a la hora de realizar una base datos. Éste es un tipo de modelo donde se puede generar relaciones entre tablas, las que son nombradas como entidades y éstas, a su vez, poseen ciertos atributos, los que poseen una conexión que se logra a través de las relaciones, para obtener la mayor información posible de la base de datos.\\
 
 \seccion{DIAGRAMA DE CASOS DE USO.}
 
-Antes de pasar a definir lo que es un diagrama de casos de usos, se debe comprender qué es un caso de uso, el cual puede ser considerado como una receta, debido a que entrega la descripción de los pasos a seguir, también muchas veces mencionado como un camino feliz a lo que se desea realizar, además en un caso de uso se deben manejar ciertas excepciones que pueden ser producidas durante el seguimiento de los ya mencionados pasos.
+Antes de pasar a definir lo que es un diagrama de casos de usos, se debe comprender qué es un caso de uso, el cual puede ser considerado como una receta, debido a que entrega la descripción de los pasos a seguir, también muchas veces mencionado como un camino feliz a lo que se desea realizar. Además en un caso de uso se deben manejar ciertas excepciones que pueden ser producidas durante el seguimiento de los ya mencionados pasos.
 
-Luego de ya entender lo que es un caso de uso, se procede a realizar la descripción de qué es un diagrama de casos de usos, partir por definir que éste diagrama es de comportamiento UML. En este diagrama se deben definir los actores y casos de usos, donde se relacionan entre sí, con la idea de que un actor realizará cierto caso de uso, es decir, éste último es considerado una actividad a realizar por cierto actor. Para mayor entendimiento se muestra a continuación como debe ser un diagrama de casos de uso:\\
+Luego de ya entender lo que es un caso de uso, se procede a realizar la descripción de qué es un diagrama de casos de usos. Se debe partir por definir que este diagrama es de comportamiento UML, en este diagrama se deben definir los actores y casos de usos, donde se relacionan entre sí, para dar a entender la idea de que un actor realizará cierto caso de uso, es decir, este último es considerado una actividad a realizar por cierto actor. Para mayor entendimiento se muestra a continuación como debe ser un diagrama de casos de uso:\\
 
 \begin{figure}[hbtp]
  \centering
@@ -49,28 +49,26 @@ Luego de ya entender lo que es un caso de uso, se procede a realizar la descripc
  
 \seccion{DIAGRAMA DE CLASES.}
 
-Es un diagrama que describe un sistema a crear, definiendo qué clases contendrá y que atributos tendrá cada una de estas, es decir, la idea de la creación de un diagrama de clases, es lograr entender de manera ordenada el sistema a crear y así no llegar y programar a tontas y a locas, sino que sabiendo de cierta manera cómo será estructurado el sistema a crear.\\
-
-\seccion{REQUERIMIENTOS FUNCIONALES.}
-
-Este tipo de requerimiento define una funcionalidad del software a realizar o de sus componentes, es decir, establecen el comportamiento del sistema. se recomienda empezar con el usuario puede.\\
-
-\seccion{REQUERIMIENTOS NO FUNCIONALES.}
-
-Es un requisito que especifica ciertos criterios que pueden usarse para juzgar la operación de un sistema en lugar de sus comportamientos específicos. se recomienda empezar estos requisitos con el sistema debe.\\
+Es un diagrama que describe un sistema a crear, definiendo qué clases contendrá y que atributos tendrá cada una de estas, es decir, la idea de la creación de un diagrama de clases, es lograr entender de manera ordenada el sistema a crear y así no llegar y programar de manera desordenada, sino que sabiendo de cierta manera cómo será estructurado el sistema a crear.\\
 
 \seccion{INGENIERÍA DE REQUERIMIENTOS.}
 
-Esta comprende todas las tareas relacionadas con la determinación de las necesidades o de las condiciones a satisfacer para el software a realizar o reconfigurar, tomando en cuenta los requisitos que se relacionan al software correspondiente, esto sea realiza entre las partes interesadas, las que pueden entrar en conflicto entre ellos.
+Esta comprende todas las tareas relacionadas con la determinación de las necesidades o de las condiciones a satisfacer para el software a realizar o reconfigurar, tomando en cuenta los requisitos que se relacionan al software correspondiente, esto sea realiza entre las partes interesadas, las que pueden entrar en conflicto entre ellos.\\
 
+\seccion{REQUERIMIENTOS FUNCIONALES.}
 
+Este tipo de requerimiento define una funcionalidad del software a realizar o de sus componentes, es decir, establecen el comportamiento del sistema y de qué manera el usuario interactúa con el mismo. En palabras simples, son todas las funcionalidades con las que el usuario se encuentra. Para describir estos requerimientos se recomienda empezar con "el usuario puede".\\
+
+\seccion{REQUERIMIENTOS NO FUNCIONALES.}
+
+Los requerimientos no funcionales, son requisitos que especifican ciertos criterios que pueden usarse para juzgar la operación de un sistema en lugar de sus comportamientos específicos. Estos requerimientos muestran cómo el sistema debe sostener y mantener la aplicación para su correcto funcionamiento. Para la descripción de estos requerimientos, se recomienda empezar con "el sistema debe".
 
 %-------------------------------------------------------------------------------------
 \capitulo{ENUNCIADO DEL PROBLEMA.}
 
-Para el proyecto se pide replicar la red social “Flickr”, que su principal objetivo es compartir las fotos de los usuarios y fomentar la retroalimentación mediante las interacciones que la aplicación permite.
+Para el proyecto se pide replicar la red social “Flickr”. El principal objetivo de esta red social, es compartir las fotos de los usuarios y fomentar la retroalimentación mediante las interacciones que la aplicación permite.
 
-Para realizar este trabajo se piden replicar ciertas funcionalidades de las distintas vistas que tiene “Flickr”, las vistas y funcionalidades que se piden son las siguientes:
+Para realizar este trabajo se piden replicar ciertas funcionalidades de las distintas vistas que tiene “Flickr”. Las vistas y funcionalidades que se piden son las siguientes:
 
 \begin{itemize}
     \item Vista perfil de usuario: Camera roll, Photo stream, Albums, Map, Favorities y Recent activities.
@@ -95,29 +93,43 @@ Para la realización del proyecto se pide conocer y desarrollar el problema con 
     \item Trello.
 \end{itemize}
 
-Para la presente entrega que es la etapa de ingeniería de requerimientos se pide, el listado de requerimientos funcionales y no funcionales, el análisis de los casos de uso y el modelo correspondiente a estos, el diagrama de clases pertinente al problema, un prototipo de interfaz de las diferentes vistas pedidas anteriormente, el diseño conceptual de la base de datos que se utilizará a futuro en la realización del proyecto y la definición de los distintos roles involucrados en la implementación del programa a realizar.
+Para la presente entrega se contempla la etapa de ingeniería de requerimientos. Esta consta de todas las tareas que se deben determinar para tener claras las necesidades y condiciones para satisfacer el software que se desarrollará, en este caso la réplica de la red social “Flickr”. Esta entrega comprende el listado de requerimientos funcionales, que constan las funcionalidades especificas que debe tener el software y sus componentes y describen el comportamiento del sistema, además de la lista de requerimientos no funcionales, estos son los requisitos que no describen comportamientos o funciones, estos se enfocan en los detalles y características que debe poseer el sistema para su correcto funcionamiento.
 
+Esta entrega también comprende el análisis de los casos de uso, en donde se listan y se describen los pasos para que se lleven a cabo los distintos procesos del software, e identificando los actores involucrados en los distintos procesos. Así también se debe presentar el modelo de casos de uso correspondiente, en donde se identifican los actores y se relacionan con los distintos casos de uso que el sistema debe satisfacer.
+
+También se debe estudiar el diagrama de clases pertinente al problema, el cual describe la estructura de las distintas clases involucradas en el sistema y las relaciones que unen a éstas, también se deben presentar los métodos que contienen cada una de estas clases.
+
+Para detallar el funcionamiento del sistema se pide un prototipo de interfaz de las diferentes vistas pedidas anteriormente, en donde se deben mostrar una vista previa de cada una de las vistas de la aplicación, detallando su funcionamiento y su diseño, además de nombrar las tecnologías que se ocuparon para la realización de éstas.
+
+La presente entrega también comprende el diseño conceptual de la base de datos que se utilizará a futuro en la implementación del proyecto. Este modelo debe mostrar las distintas entidades que se identifican en el problema y las relaciones que se encuentran entre las distintas entidades. Para esto también se deben definir la cardinalidad de las relaciones para conocer el número de esta entidad que se puede generar en cada relación.
+
+Para el fin de la primera etapa se pide realizar la definición de los distintos roles involucrados en la implementación del programa a realizar. El grupo debe definir los expertos en las distintas tecnologías que se exigen para la correcta realización del software, estos roles deben ser aceptados con responsabilidad por cada uno de los integrantes del grupo, ya que cada parte es fundamental para la correcta realización de las etapas de implementación y esencial para la finalización de este proyecto.
+
+En resumen la ingeniería de requerimientos es la etapa base del proyecto, además es una etapa muy importante ya que se deben definir los límites y funcionalidades de las distintas partes de éste. Para la futura realización de estas funcionalidades se deben definir de manera correcta los requisitos funcionales y no funcionales, además de los distintos diagramas, ya que las entregas posteriores se deben basar en esta primera etapa para su correcta realización, implementación y funcionamiento.
+
+
+%-------------------------------------------------------------------------------------
+\capitulo{OBJETIVOS.}
 
 %-------------------------------------------------------------------------------------
 \capitulo{MISIÓN Y VISIÓN DEL PRODUCTO DE SOFTWARE.}
 
 \seccion{MISIÓN.}
 
-Nuestra misión como Threads \& Bits Desarrolladores, organización destinada al desarrollo de aplicaciones web y móviles, es  lograr que las personas puedan compartir y hacer del mundo un lugar más abierto y conectado, ofreciendo a nuestros clientes productos de excelencia y con altos estándares de calidad cumpliendo así con sus expectativas y necesidades. Además, consideramos que nuestros clientes son de gran importancia para la organización, por lo cual, nos hemos propuesto entregar productos innovadores, que otorguen soluciones efectivas, seguras, confiables y de alta calidad para responder a las necesidades cambiantes, y contribuir así, a los objetivos particulares de cada uno de éstos, proporcionando de esta manera altos niveles de satisfacción.
+Nuestra misión como "Threads \& Bits Desarrolladores", organización destinada al desarrollo de aplicaciones web y móviles, es  lograr que las personas puedan compartir y hacer del mundo un lugar más abierto y conectado, ofreciendo a nuestros clientes productos de excelencia y con altos estándares de calidad cumpliendo así con sus expectativas y necesidades. Además, consideramos que nuestros clientes son de gran importancia para la organización, por lo cual, nos hemos propuesto entregar productos innovadores, que otorguen soluciones efectivas, seguras, confiables y de alta calidad para responder a las necesidades cambiantes, y contribuir así, a los objetivos particulares de cada uno de éstos, proporcionando de esta manera altos niveles de satisfacción.
 
-Como organización creemos que “BitPhoto” será un producto que cumpla con las expectativas de nuestros clientes, con nuestra aplicación buscamos otorgar una nueva experiencia a las personas, queremos que las personas compartan sus fotografías, sus trabajos, su arte con el mundo, todo esto de manera cómoda, segura y confiable. El ideal de “BitPhoto” es que el usuario tenga la posibilidad de conectarse y comunicarse con todo el mundo, desde amigos o familiares hasta compañeros de trabajo. En conclusión en Threads \& Bits Desarrolladores queremos que Bitphoto se transforme en la red social, para fotógrafos amateurs y profesionales de más éxito a nivel nacional e internacional.
+Como organización creemos que “BitPhoto” será un producto que cumpla con las expectativas de nuestros clientes, con nuestra aplicación buscamos otorgar una nueva experiencia a las personas, queremos que las personas compartan sus fotografías, sus trabajos, su arte con el mundo, todo esto de manera cómoda, segura y confiable. El ideal de “BitPhoto” es que el usuario tenga la posibilidad de conectarse y comunicarse con todo el mundo, desde amigos o familiares hasta compañeros de trabajo. En conclusión en "Threads \& Bits Desarrolladores" queremos que "Bitphoto" se transforme en la red social, para fotógrafos amateurs y profesionales de más éxito a nivel nacional e internacional.\\
 
 
 \seccion{VISIÓN.}
-
 
 Ser una organización multidisciplinaria con el fin de ofrecer soluciones en diversas áreas, integrando la tecnología y principalmente la informática a éstas. Queremos ser una organización que genere confianza en nuestros clientes, y con la sociedad. Que la organización se caracterice por ser una fuente de inversión para el capital humano, permitiéndonos así crear productos de mejor calidad.
 
 A futuro nos vemos como una organización de prestigio y seriedad en el mercado tanto nacional como internacional, logrando así con el tiempo, posicionarnos como un referente nacional en el desarrollo de soluciones informáticas para diversas áreas y campos de la sociedad actual. Queremos llegar a ser un motor que potencie el desarrollo de aplicaciones en nuestro país y latinoamérica, con alta presencia en el mercado internacional, mediante la utilización de tecnología de punta para la creación de nuestros productos. La visión a mediano o largo plazo es poder captar y cautivar a una amplia variedad de clientes, satisfaciendo sus necesidades de manera íntegra y efectiva. Buscamos trabajar con las grandes, medianas y pequeñas empresas en la implementación de soluciones vanguardistas que satisfagan sus necesidades.
 
-Threads \& Bits Desarrolladores tiene como objetivo a corto plazo satisfacer el mercado nacional con la creaciones de nuestro producto “BitPhoto” el cual creemos que nos permitirá crecer y mejorar de manera continua, permitiéndonos de esta manera ampliar el mercado en el cual nos movemos  y mejorar la calidad de los servicios que ofrecemos a nuestros clientes.
+"Threads \& Bits Desarrolladores" tiene como objetivo a corto plazo satisfacer el mercado nacional con la creaciones de nuestro producto “BitPhoto” el cual creemos que nos permitirá crecer y mejorar de manera continua, permitiéndonos de esta manera ampliar el mercado en el cual nos movemos  y mejorar la calidad de los servicios que ofrecemos a nuestros clientes.
 
-Creemos que “BitPhoto” se transformará en la plataforma donde cada fotógrafo profesional o amateur podrá mostrar su trabajo al mundo y conectarse más por medio de las redes sociales.  También tenemos la visión que “BitPhoto” permitirá a organizaciones de distintas índoles mostrar sus actividades por medio de la fotografía. Y creemos firmemente que “BitPhoto” se transformará en la aplicación más utilizada por las personas para almacenar y compartir sus fotografías con familia, amigos, compañeros de trabajo, etc.
+Creemos que “BitPhoto” se transformará en la plataforma donde cada fotógrafo profesional o amateur podrá mostrar su trabajo al mundo y conectarse más por medio de las redes sociales.  También tenemos la visión que “BitPhoto” permitirá a organizaciones de distintas índoles mostrar sus actividades por medio de la fotografía. Y creemos firmemente que “BitPhoto” se transformará en la aplicación más utilizada por las personas para almacenar y compartir sus fotografías con familia, amigos, compañeros de trabajo, entre otros.
 
 
 %-------------------------------------------------------------------------------------
@@ -348,7 +360,7 @@ Se ha identificado solamente un actor que interactúa con el sistema utilizando 
 \begin{figure}[hbtp]
  \centering
  \includegraphics[width=15cm]{DiagramaDeCasosDeUso.jpg}
- \caption{Diagrama de Casos de Uso}
+ \caption{Diagrama de Casos de Uso completo.}
  \end{figure}
   
 
@@ -360,9 +372,22 @@ Se ha identificado solamente un actor que interactúa con el sistema utilizando 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=17cm]{DiagramaDeClases.jpg}
-\caption{Diagrama de Clases}
+\caption{Diagrama de Clases completo.}
 \end{figure}
 
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=17cm]{DiagramaDeClases2.jpg}
+\caption{Diagrama de Clases sección 1.}
+\end{figure}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=17cm]{DiagramaDeClases3.jpg}
+\caption{Diagrama de Clases sección 2.}
+\end{figure}
+
+\newpage
 
 \seccion{CLASES.}
 
@@ -401,14 +426,14 @@ Como se puede apreciar en la imagen x, el diagrama de clases consta de nueve cla
 
 - \textbf{Nicolas Rozas Sepúlveda}: Es el especialista en Base de datos, será el encargado de utilizar las herramientas y administrar la base de datos relacional (distribuir, poblar tablas, etc), utilizando las tecnologías, MySql y en diseño MySql Workbench u otras.\\
 
-- \textbf{Daniel Gacitúa Vásquez}: Encargado de la interfaz web que poseerá la aplicación, la cual debe  facilitar las consultas que los usuarios deseen realizar al servidor de aplicaciones mediante una interfaz adecuada, utilizando una presentación correcta para la funcionalidad que se le dará a BitPhoto. Para esto se utilizará AngularJS y HTML5.\\
+- \textbf{Daniel Gacitúa Vásquez}: Encargado de la interfaz web que poseerá la aplicación, la cual debe  facilitar las consultas que los usuarios deseen realizar al servidor de aplicaciones mediante una interfaz adecuada, utilizando una presentación correcta para la funcionalidad que se le dará a "BitPhoto". Para esto se utilizará AngularJS y HTML5.\\
 
-- \textbf{Gerson Aguirre Pavez}: Encargado de realizar el buscador, utilizando la herramienta Apache Lucene junto con la aplicación de índices invertidos para la indexación de datos.\\
+- \textbf{Gerson Aguirre Pavez}: Encargado de realizar el buscador, parte importante de las vistas que se solicitan, utilizando la herramienta Apache Lucene junto con la aplicación de índices invertidos para la indexación de datos.\\
 
-- \textbf{Max Chacón Villanueva}: Encargado de la aplicación móvil. Estará a cargo de posibilitar el uso de BitPhoto en dispositivos android.\\
+- \textbf{Max Chacón Villanueva}: Encargado de la aplicación móvil. Estará a cargo de posibilitar el uso de "BitPhoto" en dispositivos Android.\\
 
 
-Cabe destacar que se asignaron compañeros de apoyo para los diversos roles.
+Cabe destacar que se asignaron compañeros de apoyo para los diversos roles, quedando la organización de la siguiente manera:
 
 \begin{itemize}
 	\item \textbf{Base de Datos}:  Encargado Nicolas -> Soporte Elías.
@@ -418,7 +443,7 @@ Cabe destacar que se asignaron compañeros de apoyo para los diversos roles.
 	\item \textbf{Buscador}: Encargado Gerson -> Soporte Max.\\
 \end{itemize}
 
-También es importante señalar que todos los miembros del Grupo de trabajo estarán encargados de asegurar la calidad del producto (Aplicación "BitPhoto"), es decir todos son responsables de la revisión de todos los procesos y tareas que se realicen, además de velar porque se cumplan los resultados que se esperan y que se realice todo de manera correcta.\\
+También es importante señalar que todos los miembros del Grupo de trabajo estarán encargados de asegurar la calidad del producto (aplicación "BitPhoto"), es decir todos son responsables de la revisión de todos los procesos y tareas que se realicen, además de velar porque se cumplan los resultados que se esperan y que se realice todo de manera correcta.\\
 
 \seccion{DEFINICIÓN DE HERRAMIENTAS.}
 
@@ -453,7 +478,12 @@ Dentro de la organización, se han creado diferentes repositorios para cada mód
 
 Cada miembro del grupo tendrá acceso a todos los repositorios para fomentar la colaboración. Cabe destacar que con un sistema modular de repositorios dentro de la organización ordena de mejor manera los aportes de cada miembro y ayuda a evitar el entorpecimiento al hacer commits de forma concurrente.
 
-\capitulo{CONCLUSIONES.}
+%-------------------------------------------------------------------------------------
+\capitulonn{CONCLUSIONES.}
+
+
+%-------------------------------------------------------------------------------------
+\capitulonn{BIBLIOGRAFÍA.}
 
 
 \end{document}
