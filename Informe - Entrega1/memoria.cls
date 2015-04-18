@@ -413,3 +413,25 @@
        \fontfamily{ptm} %new times roman
         \selectfont
 }
+
+% Define una tabla no numerada
+% Argumentos {caption}{tabla}
+\newcommand{\tablann}[2]{
+        \fontsize{12}{14}
+        \fontfamily{ptm} %new times roman
+        \selectfont
+
+        \addtocounter{table}{1}
+
+
+        \begin{center}
+                \emph{Tabla \arabic{table}: #1} \\
+                        #2
+        \end{center}
+
+        \addcontentsline{lot}{table}{Tabla \arabic{table}: #1} 
+
+        \fontsize{10}{11}
+        \fontfamily{ptm} %new times roman
+        \selectfont
+}
