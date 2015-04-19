@@ -370,18 +370,6 @@ Se ha identificado solamente un actor que interactúa con el sistema utilizando 
 	\includegraphics[width=15cm]{DiagramaDeClases.jpg}
 }
 
-\figura{Diagrama de Clases (sección 1)}{
-	\includegraphics[width=15cm]{DiagramaDeClases2.jpg}
-}
-
-\figura{Diagrama de Clases (sección 2)}{
-	\includegraphics[width=15cm]{DiagramaDeClases3.jpg}
-}
-
-\newpage
-
-\seccion{CLASES.}
-
 Como se puede apreciar en la imagen anterior, el diagrama de clases consta de nueve clases necesarias para la implementación de la aplicación, las cuales serán explicadas a continuación:
 
 \begin{itemize}
@@ -395,6 +383,30 @@ Como se puede apreciar en la imagen anterior, el diagrama de clases consta de nu
     \item \textbf{Cámara}: Dentro de la aplicación se maneja cierta información de las cámaras que han sacado ciertas fotos, esta clase será la encargada de extraer cierta información.
     \item \textbf{Buscador}: Entre las funcionalidades de la aplicación está la búsqueda de usuarios y fotos, esta clase es la encargada de que esta funcionalidad sea realizada.   
 \end{itemize}
+
+
+\newpage
+
+Para mayor entendimiento en la explicación del diagrama se toma la decisión de dividir en dos partes éste, la parte celeste representando la gran clase Usuario y sus acompañantes, y la parte de color anaranjado en representación de la clase Fotografía y sus clases acompañantes:
+
+\figura{Diagrama de Clases (sección 1)}{
+	\includegraphics[width=14cm]{DiagramaDeClases2.jpg}
+}
+
+Como se puede apreciar la clase Usuario posee relación con Tag y clasificador, en significado de que un usuario puede realizar 1 o muchos tag en ciertos comentarios, esta relación quiere decir que el Tag necesita de la clase usuario para poder ser creados, es decir, como es usuario el que crea tag en el sistema se relacionan en agregación al igual que la relación entre comentario y usuario. 
+Además se puede observar la clase clasificador, la cual representa una de las herramientas a implementar, la que tiene como finalidad otorgar de un estado a un comentario, el cual puede ser positivo, negativo o neutral, es por esto que clasificador posee como atributo un comentario.
+Cabe mencionar que un usuario puede subir fotografias, que en fin esta es la primordial funcionalidad del sistema, además un usuario puede crear ciertos álbumes, donde puede suministrar de atributos a estos álbumes como a las fotografías.
+Finalizando con esta parte también se puede destacar que existe una relación entre comentario y fotografía, la cual representa que una fotografía posee ciertos comentarios, los cuales pueden ser desde cero a muchos comentarios, los cuales pueden ser agregados por usuarios ajenos a la fotografía, así como el mismo usuario que la subió.
+
+\figura{Diagrama de Clases (sección 2)}{
+	\includegraphics[width=14cm]{DiagramaDeClases3.jpg}
+}
+
+Siguiendo con la ya mencionada parte anterior, se puede apreciar que está la clase principal que es fotografía, primordial por el hecho de que el sistema está basado en el uso de las fotografías. Es acá donde se ve que un álbum posee ciertas fotografías, es decir, un álbum posee cero o muchas de estas fotografías.
+La clase mapa está relacionada con la clase fotografía, debido a que la idea de esta clase es posicionar en un mapa mundial ciertas fotografías que se han cargado en ciertas ubicaciones dentro del mundo, Es así como se representa dentro de los atributos de la fotografía una localización, es por esta funcionalidad que sea decidido agregar una nueva clase llamada mapa.
+Por otro lado se tiene la clase Buscador, la cual posee la funcionalidad de poder realizar una búsqueda con el ingreso de palabras claves y antecedentes dentro del sistema, esto con la idea de que se tiene en cuenta que el sistema funcionará para una gran cantidad de usuarios y se desea facilitar la tarea de encontrar ciertos aspectos en el sistema por parte del usuario.
+Finalmente la clase Cámara, que está relacionada con la clase fotografía, esto debido a que se agrega como funcionalidad que el sistema pueda asociar la cámara que capturó la fotografía 
+
 
 %-------------------------------------------------------------------------------------
 \capitulo{BASE DE DATOS.}
@@ -491,8 +503,6 @@ El formulario de registro muestra un estilo claro y sencillo.
 \figura{Vista Registro}{
 	\includegraphics[width=14cm]{proto/02.jpg}
 }
-
-\newpage
 
 El formulario de acceso a la plataforma (login) se ha dispuesto como un submenú por claridad y agilidad de acceso.
 \figura{Vista Login}{
