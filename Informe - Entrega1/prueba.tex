@@ -382,7 +382,7 @@ Se ha identificado solamente un actor que interactúa con el sistema utilizando 
 
 \seccion{CLASES.}
 
-Como se puede apreciar en la imagen x, el diagrama de clases consta de nueve clases necesarias para la implementación de la aplicación, las cuales serán explicadas a continuación:
+Como se puede apreciar en la imagen anterior, el diagrama de clases consta de nueve clases necesarias para la implementación de la aplicación, las cuales serán explicadas a continuación:
 
 \begin{itemize}
     \item \textbf{Usuario}: Debido a que la aplicación será utilizada por usuarios, los cuales poseerán una cuenta para la identificación de éste, es por eso que deberá contener los atributos necesarios. 
@@ -399,12 +399,81 @@ Como se puede apreciar en la imagen x, el diagrama de clases consta de nueve cla
 %-------------------------------------------------------------------------------------
 \capitulo{BASE DE DATOS.}
 
+A continuación se presenta el modelo conceptual de base de datos de la aplicación, con las entidades y relaciones entre estas, además se presentan el tipo de cardinalidad de la relación y en qué casos es mandatoria.
 
-\seccion{MODELO DE BASE DE DATOS.}
+\figura{Modelo Conceptual base de datos con PowerDesigner v16.1}{
+	\includegraphics[width=15cm]{ImagenesMCDB/DiagramaConcBD.jpg}
+}
+
+\seccion{DESCRIPCIÓN DE TABLAS.}
+
+\begin{itemize}
+	\item evento: contiene información sobre los tipos de eventos que pueden realizar, o gatillar por parte del usuario en el sistema, por ejemplo borrar fotografia, seguir a otro usuario, comentar una foto, etc.
+	\item registro\_movimiento\_usuario: contiene información sobre el evento en específico, asociado a un determinado usuario, fecha en que se realizó el evento, quien lo realizó, entre otras.
+	\item datos\_analisis: contiene información de análisis respecto de la aplicación, número de personas que la utilizaron durante el dia, fotos subidas por dia, comentarios por dia, etc.
+	\item usuario: contiene datos sobre el usuario de la aplicación, los permisos con los que cuenta su perfil, localización del usuario, nick de usuario, entre otros.
+	usuario\_follow\_usuario: contiene datos sobre la relación entre seguido y seguidor, de manera unidireccional, también contendrá la fecha en que se realizó esta actividad.
+	\item palabras\_weka: contiene información sobre cada palabra considerada para el desarrollo de la aplicación web, palabra, frecuencia utilizada, el peso relativo de la palabra, etc.
+	\item album: contiene información sobre el álbum creado por determinado usuario.Descripción, fecha de creación, número de fotos en el álbum, etc.
+	\item comentario\_album: contiene información sobre los comentarios realizados por los determinados usuarios a determinados álbumes.
+	\item galeria: contiene datos sobre las galerías creadas por los usuarios de la aplicación.( Los atributos de esta tabla no están especificados ya que no se agregara esta funcionalidad al sistema, pero igual se agregó como tabla, para futuras implementaciones , como también para mostrar la modularidad del modelo, que permite agregar nuevas tablas).
+	\item foto\_referencia\_usuario: contiene información sobre las personas que se encuentran en determinadas fotos, se indica la posición en la cual se encuentran dentro de la fotografia, la fotografia y el usuario al cual se hace referencia.
+	\item galeria\_fotos: contiene información sobre la relación entre una foto y determinada galería (Al igual que para galería los atributos de esta tabla no se encuentran definidos en su totalidad por circunstancias similares).
+	\item camara: contiene información sobre las cámaras utilizadas para la tomas de las fotos. datos como el modelo, características de zoom, cuantos MP posee, etc.
+	\item tag\_u: contiene información sobre el tag que utilizan de manera generalizada los usuarios de la aplicación.
+	\item fotografia: contiene información sobre las fotografías, contiene gran cantidad de atributos, y muchos de ellos puede que no se utilicen en primera instancia, por lo cual se agregaron todos los entregados por la API de Flickr.
+	\item comentario\_foto:contiene información sobre los comentarios realizados por usuarios hacia ciertas fotografías, la fecha en que realizó el comentario, entre otras cosas. 
+	\item tag\_usuario: contiene información sobre el tag y quien utilizó determinado tag.
+	\item tag\_foto:contiene información sobre qué tags fueron utilizados para determinada fotografía.
+	\item lugar: contiene información sobre los lugares a los cuales puede hacer referencia una fotografía.
+	\item favorito: contiene información sobre la relación entre favoritos, cuando un usuario agrega una foto de otro usuario como favorita.
+\end{itemize}
+
+\newpage
+
+\seccion{DESCRIPCIÓN DE RELACIONES.}
+
+\figura{Modelo Conceptual Base de Datos (Parte 1)}{
+	\includegraphics[width=15cm]{ImagenesMCDB/MBD1.jpg}
+}
+
+En la figura anterior se observa la relación que existe entre las entidades evento, registro\_ movimiento\_usuario, usuario y usuario\_follow\_usuario. Primero usuario\_follow\_usuario se relaciona con usuario mediante una asociación doble, lo cual hace referencia que un usuario puede ser seguido por otro usuario en el sistema, esta representación será unidireccional.
+Esta parte de la base de datos permitirá respaldar la información sobre qué usuarios se encuentran siguiendo a otros.
+Luego en la relación usuario y registro\_movimiento\_usuario se representa que un usuario puede tener registros de movimiento de usuario, y a su vez estos pueden ser por diversos tipos de eventos. Cabe señalar que en registro\_movimiento\_usuario y usuario\_follow\_usuario convergen en relaciones muchos a muchos por los cual ambas tablas al pasar del modelo conceptual al lógico tendrán identificadores de las tablas con las cuales se relacionan.
 
 
+\figura{Modelo Conceptual Base de Datos (Parte 2)}{
+	\includegraphics[width=15cm]{ImagenesMCDB/MBD2.jpg}
+}
 
-\seccion{ENTIDADES Y ATRIBUTOS.}
+En la figura recién expuesta se presenta la relación entre las tablas usuario y fotografía entre las cuales se encuentran otras tablas como lo son, album, galeria, foto\_referencia\_usuario, comentario\_album. Además se presenta una tabla que solo se relaciona de manera directa con fotografía como lo es Camara. 
+Primero mediante la relación propietario se relaciona fotografía con usuario, ya que un usuario puede poseer fotografías. En relación a la tabla foto\_referencia\_usuario, ésta se relaciona con usuario y fotografía convergiendo en una relación muchos a muchos. Tambien tenemos álbum pertenece un usuario, a su vez fotografía, pertenece a determinado álbum. 
+La tabla comentario\_album es convergencia de una relación mucho a mucho entre usuario que comenta un álbum. 
+Las entidades galeria y galeria\_fotos no se explicaran por el momento, hasta tener claro si se considerara o no esta funcionalidad. La tabla camara se relación con la tabla fotografía, ya que una fotografía puede ser tomada con una determinada cámara. 
+
+\figura{Modelo Conceptual Base de Datos (Parte 3)}{
+	\includegraphics[width=15cm]{ImagenesMCDB/MBD3.jpg}
+}
+
+En la figura anterior Se presenta la relación que existe entre usuario y fotografía mediante las tablas comentario\_foto, tag\_foto, tag\_usuario, tag\_u, lugar y favorito. La tabla comentario\_foto se relaciona con el usuario que realizó el comentario y con la fotografía que se comento. A su vez la tabla favoritos se relaciona con la tabla usuario que tiene como favorita una determinada fotografía. Luego se presentan las tablas tag\_usuario que permitirá tener información sobre qué tag utiliza cada usuario y mediante tag\_foto determinar quien colocó determinado tag a una determinada fotografía. También se tendrá como dato el tag a nivel generalizado ya que muchos usuarios pueden utilizar el mismo tag. Los tag también hacen referencia a lugares por eso la relación entre tag\_u y lugares, esta relación permitirá mediante el buscador encontrar fotos que referencian lugares del mundo. Cabe señalar que dependiendo de la fotografía se tendrán datos o no respeto a su geolocalización y a su vez datos sobre el lugar en el cual fue tomada.
+
+
+\seccion{ENUMERACIÓN DE ATRIBUTOS.}
+
+A continuación se mostrarán las tablas con sus respectivos atributos, cabe destacar que puede que los atributos considerados no se utilicen en su totalidad y que pueden estar sujetos a cambios.
+
+\figura{Atributos de Tablas (parte 1)}{
+	\includegraphics[width=15cm]{ImagenesMCDB/Tabla1.jpg}
+}
+
+\figura{Atributos de Tablas (parte 2)}{
+	\includegraphics[width=15cm]{ImagenesMCDB/Tabla2.jpg}
+}
+
+\figura{Atributos de Tablas (parte 3)}{
+	\includegraphics[width=15cm]{ImagenesMCDB/Tabla3.jpg}
+}
+
 
 %-------------------------------------------------------------------------------------
 \capitulo{PROTOTIPO DE INTERFAZ DE USUARIO.}
