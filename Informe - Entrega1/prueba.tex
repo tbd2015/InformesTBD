@@ -445,25 +445,25 @@ A continuación se presenta el modelo conceptual de base de datos de la aplicaci
 \seccion{DESCRIPCIÓN DE TABLAS.}
 
 \begin{itemize}
-	\item evento: contiene información sobre los tipos de eventos que pueden realizar, o gatillar por parte del usuario en el sistema, por ejemplo borrar fotografia, seguir a otro usuario, comentar una foto, etc.
-	\item registro\_movimiento\_usuario: contiene información sobre el evento en específico, asociado a un determinado usuario, fecha en que se realizó el evento, quien lo realizó, entre otras.
-	\item datos\_analisis: contiene información de análisis respecto de la aplicación, número de personas que la utilizaron durante el dia, fotos subidas por dia, comentarios por dia, etc.
-	\item usuario: contiene datos sobre el usuario de la aplicación, los permisos con los que cuenta su perfil, localización del usuario, nick de usuario, entre otros.
-	usuario\_follow\_usuario: contiene datos sobre la relación entre seguido y seguidor, de manera unidireccional, también contendrá la fecha en que se realizó esta actividad.
-	\item palabras\_weka: contiene información sobre cada palabra considerada para el desarrollo de la aplicación web, palabra, frecuencia utilizada, el peso relativo de la palabra, etc.
-	\item album: contiene información sobre el álbum creado por determinado usuario.Descripción, fecha de creación, número de fotos en el álbum, etc.
-	\item comentario\_album: contiene información sobre los comentarios realizados por los determinados usuarios a determinados álbumes.
-	\item galeria: contiene datos sobre las galerías creadas por los usuarios de la aplicación.( Los atributos de esta tabla no están especificados ya que no se agregara esta funcionalidad al sistema, pero igual se agregó como tabla, para futuras implementaciones , como también para mostrar la modularidad del modelo, que permite agregar nuevas tablas).
-	\item foto\_referencia\_usuario: contiene información sobre las personas que se encuentran en determinadas fotos, se indica la posición en la cual se encuentran dentro de la fotografia, la fotografia y el usuario al cual se hace referencia.
-	\item galeria\_fotos: contiene información sobre la relación entre una foto y determinada galería (Al igual que para galería los atributos de esta tabla no se encuentran definidos en su totalidad por circunstancias similares).
-	\item camara: contiene información sobre las cámaras utilizadas para la tomas de las fotos. datos como el modelo, características de zoom, cuantos MP posee, etc.
-	\item tag\_u: contiene información sobre el tag que utilizan de manera generalizada los usuarios de la aplicación.
-	\item fotografia: contiene información sobre las fotografías, contiene gran cantidad de atributos, y muchos de ellos puede que no se utilicen en primera instancia, por lo cual se agregaron todos los entregados por la API de Flickr.
-	\item comentario\_foto:contiene información sobre los comentarios realizados por usuarios hacia ciertas fotografías, la fecha en que realizó el comentario, entre otras cosas. 
-	\item tag\_usuario: contiene información sobre el tag y quien utilizó determinado tag.
-	\item tag\_foto:contiene información sobre qué tags fueron utilizados para determinada fotografía.
-	\item lugar: contiene información sobre los lugares a los cuales puede hacer referencia una fotografía.
-	\item favorito: contiene información sobre la relación entre favoritos, cuando un usuario agrega una foto de otro usuario como favorita.
+	\item evento: Contiene información sobre los tipos de eventos que pueden realizar, o gatillar por parte del usuario en el sistema, por ejemplo borrar fotografia, seguir a otro usuario, comentar una foto, etc.
+	\item registro\_movimiento\_usuario: Contiene información sobre el evento en específico, asociado a un determinado usuario, fecha en que se realizó el evento, quien lo realizó, entre otras.
+	\item datos\_analisis: Contiene información de análisis respecto de la aplicación, número de personas que la utilizaron durante el dia, fotos subidas por dia, comentarios por dia, etc.
+	\item usuario: Contiene datos sobre el usuario de la aplicación, los permisos con los que cuenta su perfil, localización del usuario, nick de usuario, entre otros.
+	usuario\_follow\_usuario: Contiene datos sobre la relación entre seguido y seguidor, de manera unidireccional, también contendrá la fecha en que se realizó esta actividad.
+	\item palabras\_weka: Contiene información sobre cada palabra considerada para el desarrollo de la aplicación web, palabra, frecuencia utilizada, el peso relativo de la palabra, etc.
+	\item album: Contiene información sobre el álbum creado por determinado usuario. Descripción, fecha de creación, número de fotos en el álbum, etc.
+	\item comentario\_album: Contiene información sobre los comentarios realizados por los determinados usuarios a determinados álbumes.
+	\item galeria: Contiene datos sobre las galerías creadas por los usuarios de la aplicación (los atributos de esta tabla no están especificados ya que no se agregara esta funcionalidad al sistema, pero igual se agregó como tabla, para futuras implementaciones, como también para mostrar la modularidad del modelo, que permite agregar nuevas tablas).
+	\item foto\_referencia\_usuario: Contiene información sobre las personas que se encuentran en determinadas fotos, se indica la posición en la cual se encuentran dentro de la fotografia, la fotografia y el usuario al cual se hace referencia.
+	\item galeria\_fotos: Contiene información sobre la relación entre una foto y determinada galería (Al igual que para galería los atributos de esta tabla no se encuentran definidos en su totalidad por circunstancias similares).
+	\item camara: Contiene información sobre las cámaras utilizadas para la tomas de las fotos, datos como el modelo, características de zoom, cuantos MP posee, etc.
+	\item tag\_u: Contiene información sobre el tag que utilizan de manera generalizada los usuarios de la aplicación.
+	\item fotografia: Contiene información sobre las fotografías, contiene gran cantidad de atributos, y muchos de ellos puede que no se utilicen en primera instancia, por lo cual se agregaron todos los entregados por la API de Flickr.
+	\item comentario\_foto: Contiene información sobre los comentarios realizados por usuarios hacia ciertas fotografías, la fecha en que realizó el comentario, entre otras cosas. 
+	\item tag\_usuario: Contiene información sobre el tag y quien utilizó determinado tag.
+	\item tag\_foto: Contiene información sobre qué tags fueron utilizados para determinada fotografía.
+	\item lugar: Contiene información sobre los lugares a los cuales puede hacer referencia una fotografía.
+	\item favorito: Contiene información sobre la relación entre favoritos, cuando un usuario agrega una foto de otro usuario como favorita.
 \end{itemize}
 
 \newpage
@@ -654,7 +654,7 @@ A continuación se describe de manera breve y generalizada las tecnologías y he
 
 \textbf{AngularJS 1.3+}: Es un framework de JavaScript de código abierto, mantenido con el apoyo de google. Tiene como objetivo apoyar la creación de aplicaciones basadas en la capacidad del navegador con un modelo MVC, incluyendo así facilidades para el desarrollo y la prueba del código. El objetivo de utilizar esta herramienta está en desarrollar un esquema de aplicación web basado en rutas, potenciado por el uso de JavaScript y HTML5.\\
 
-\textbf{Bootstrap 3.3+}: Es un framework de diseño web, libre y de código abierto, que contiene una colección de herramientas para la creación de sitios web y aplicaciones web . Contiene código predefinido HTML5 y plantillas CSS, para determinar la forma de los botones, textos, características en la navegación entre otras. Lo utilizaremos también para la creación de la interfaz tanto web de BitPhoto con el fin de agilizar el desarrollo de la interfaz, al mismo tiempo que ésta queda con un diseño adaptativo y homogéneo.\\
+\textbf{Bootstrap 3.3+}: Es un framework de diseño web, libre y de código abierto, que contiene una colección de herramientas para la creación de sitios web y aplicaciones web. Contiene código predefinido HTML5 y plantillas CSS, para determinar la forma de los botones, textos, características en la navegación entre otras. Lo utilizaremos también para la creación de la interfaz tanto web de BitPhoto con el fin de agilizar el desarrollo de la interfaz, al mismo tiempo que ésta queda con un diseño adaptativo y homogéneo.\\
 
 \textbf{jQuery 1.x}: Es una biblioteca de JavaScript, creada en un comienzo por John Resing, esta biblioteca permite simplificar la manera de interactuar entre documentos HTML, manejar eventos, desarrollar animaciones, entre otras cosas. Todo esto complementado con la técnica AJAX para la creación de páginas web. Licencia MIT. jQuery otorgará funcionalidades basadas en JavaScript para la creación de BitPhoto, permitiendo lograr grandes resultados en menos tiempo y menos líneas de código.\\
 
@@ -738,18 +738,18 @@ A continuación se presentan las tareas definidas y los tiempos estimados.
 	\includegraphics[width=14cm]{burndown/Tareas3.jpg}
 }
 
-Ahora la cantidad de horas de trabajos estimadas son 54.32 hrs, Las horas de trabajo real fueron 56.38 , notar que las horas reales trabajadas superaron las horas estimadas en 2,06 hrs aprox, esto quiere decir que las tareas se estimaron correctamente en su mayoría, ya que este margen de error fue relativamente bajo. Tiempo promedio por tarea fue de 1.11 hrs. Otros datos que se obtiene al analizar lo anterior son:
+Ahora la cantidad de horas de trabajos estimadas son 54.32 hrs, Las horas de trabajo real fueron 56.38, notar que las horas reales trabajadas superaron las horas estimadas en 2.06 hrs aprox, esto quiere decir que las tareas se estimaron correctamente en su mayoría, ya que este margen de error fue relativamente bajo. Tiempo promedio por tarea fue de 1.11 hrs. Otros datos que se obtiene al analizar lo anterior son:
 
 \begin{itemize}
 	\item Estimación Trabajo Diario Grupo: 7.5 
 	\item Horas Disponibles en Sprint por cada integrante: 37.5 
-	\item Horas Disponibles  en Sprint del Grupo: 187.5 
+	\item Horas Disponibles en Sprint del Grupo: 187.5 
 	\item Trabajo por dia promedio ideal 2.59 
 \end{itemize}
 
-Cabe señalar que si se trabajara de manera ideal, sobraría  tiempo equivalente a 187.5 hrs - 54.32 hrs = 133.18 hrs . Al pasar una semana se creyó que era necesario definir los roles de cada miembro del grupo para comenzar a trabajar o informarse desde ahora sobre el área en particular designada.
+Cabe señalar que si se trabajara de manera ideal, sobraría  tiempo equivalente a 187.5 hrs - 54.32 hrs = 133.18 hrs. Al pasar una semana se creyó que era necesario definir los roles de cada miembro del grupo para comenzar a trabajar o informarse desde ahora sobre el área en particular designada.
 
-A continuación se presentan los gráficos BurnDown y BurnUP con el fin de señalar la forma en que se trabajó a lo largo del Sprint:
+A continuación se presentan los gráficos BurnDown y BurnUp con el fin de señalar la forma en que se trabajó a lo largo del Sprint:
 
 \figura{Gráfico de Burndown/Burnup}{
 	\includegraphics[width=14cm]{burndown/burndown2.jpg}
@@ -813,10 +813,14 @@ Se añaden las observaciones realizadas al trabajo durante la 1º Presentación 
 %-------------------------------------------------------------------------------------
 \capitulonn{CONCLUSIONES.}
 
-Luego de finalizar la primera entrega del proyecto correspondiente a la ingeniería de requerimientos, se ha concluido en dos perspectivas que se estiman  adecuadas a la hora de realizar futuros trabajos, perspectiva a nivel de la ingeniería de requerimientos y la perspectiva de trabajo en equipo.
-Con respecto a la ingeniería de requerimientos y ciertos aspectos utilizados a la hora de realizar la entrega, se puede decir que las herramientas utilizadas y mencionadas con anterioridad en el informe, han facilitado muchos aspectos, agregando además que han ampliado la perspectiva del proyecto, logrando así entender en profundidad cómo funciona el sistema a crear,  cuales son estas funcionalidades y cómo se pueden crear a futuro. 
+Luego de finalizar la primera entrega del proyecto correspondiente a la ingeniería de requerimientos, se ha concluido en dos perspectivas que se estiman adecuadas a la hora de realizar futuros trabajos, perspectiva a nivel de la ingeniería de requerimientos y la perspectiva de trabajo en equipo.
+
+Con respecto a la ingeniería de requerimientos y ciertos aspectos utilizados a la hora de realizar la entrega, se puede decir que las herramientas utilizadas y mencionadas con anterioridad en el informe, han facilitado muchos aspectos, agregando además que han ampliado la perspectiva del proyecto, logrando así entender en profundidad cómo funciona el sistema a crear, cuales son estas funcionalidades y cómo se pueden crear a futuro.
+
 Es por esto que se puede decir que esta etapa en la ingeniería de software es fundamental a la hora de iniciar el proyecto.
-En la otra perspectiva a nivel del trabajo en equipo, se puede concluir que se ha logrado una gran comunicación entre cada uno de los integrantes del grupo y una buena organización debido a esto mismo, en conjunto con las herramientas de carácter social se ha logrado un gran avance en relación al trabajo en equipo. 
+
+En la otra perspectiva a nivel del trabajo en equipo, se puede concluir que se ha logrado una gran comunicación entre cada uno de los integrantes del grupo y una buena organización debido a esto mismo, en conjunto con las herramientas de carácter social se ha logrado un gran avance en relación al trabajo en equipo.
+
 Finalmente como conclusión general se puede decir que se ha trabajado de manera íntegra cumpliendo a cabalidad los objetivos específicos tanto como generales que se han planteado.
 
 
