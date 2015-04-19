@@ -435,3 +435,9 @@
         \fontfamily{ptm} %new times roman
         \selectfont
 }
+
+\newcommand{\biblio}{
+        \capitulonn{Bibliografía}
+        \printbibliography[heading=none]
+        \nocite{*}
+}

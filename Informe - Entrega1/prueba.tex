@@ -306,7 +306,7 @@ RNF2: La aplicación Web debe usar la tecnología AngularJS.
 
 RNF3: La forma de persistir la información del sistema será mediante una base de datos relacional ocupando el gestor de base de datos MySQL.
 
-RNF4: La base de datos debe ofrecer soporte a datos geoespaciales.
+RNF4: La base de datos debe ofrecer soporte a datos geoespaciales con formato WKT (Well-Known Text).
 
 RNF5: El sitio web del sistema debe utilizar HTML5 para sus vistas.
 
@@ -706,6 +706,58 @@ Dentro de la organización, se han creado diferentes repositorios para cada mód
 
 Cada miembro del grupo tendrá acceso a todos los repositorios para fomentar la colaboración. Cabe destacar que con un sistema modular de repositorios dentro de la organización ordena de mejor manera los aportes de cada miembro y ayuda a evitar el entorpecimiento al hacer commits de forma concurrente.
 
+\newpage
+
+\seccion{COMUNICACIÓN, AVANCES Y BURNDOWN.}
+
+En la primera reunión realizada planificamos el Sprint, se determinó que el primer Sprint duraría hasta el 17 de Abril del 2015. Además se acordó las horas de trabajo diarias que se podían dedicar a la realización del proyecto, se estimó que cada integrante del grupo podría dedicar a lo máximo 1.5 hrs al dia para el proyecto. Luego se definieron las tareas para que estas se pudieran realizar en un tiempo cercano al de trabajo diario estimado, luego se estimó el tiempo que se demoraría cada tarea en estar realizada. 
+
+Para la realización de la primera entrega el grupo optó por varios canales de comunicación para manejar las relaciones entre los participantes, por lo tanto se determinaron distintas tecnologías para objetivos específicos, los canales usados para comunicarse entre el grupo fueron los siguientes:
+
+\begin{itemize}
+	\item Se creó un grupo en WhatsApp, con el fin de conversar inmediatamente y de forma rápida temas relacionados con el proyecto, principalmente se utilizó para dudas cortas y compartir pequeñas opiniones del proyecto. 
+	\item Se creó un grupo en Facebook, para registrar minutas, información relevante y noticias que afecten a todos los integrantes del grupo.
+	\item Se creo una carpeta en google drive, para con el fin de compartir documento referentes al informe, presentaciones, etc.  
+	\item Se utilizó la aplicación Trello para organizar las partes que se debían realizar en la entrega, además esta aplicación permite organizar las partes del proyecto definiendo las tareas personalmente y los tiempos con los que fueron realizadas cada una de estas.
+	\item Para controlar las versiones del informe y los prototipo de las vistas se utilizó la herramienta Git que permite controlar las versiones de estas dos partes del proyecto, esta tecnología se utiliza para archivos de texto plano y para controlar las modificaciones que se le pueden realizar a estos.
+\end{itemize}
+
+\newpage
+
+A continuación se presentan las tareas definidas y los tiempos estimados.
+
+\figura{Tareas 1-15}{
+	\includegraphics[width=14cm]{burndown/Tareas1.jpg}
+}
+
+\figura{Tareas 16-32}{
+	\includegraphics[width=14cm]{burndown/Tareas2.jpg}
+}
+
+\figura{Tareas 33-49}{
+	\includegraphics[width=14cm]{burndown/Tareas3.jpg}
+}
+
+Ahora la cantidad de horas de trabajos estimadas son 54.32 hrs, Las horas de trabajo real fueron 56.38 , notar que las horas reales trabajadas superaron las horas estimadas en 2,06 hrs aprox, esto quiere decir que las tareas se estimaron correctamente en su mayoría, ya que este margen de error fue relativamente bajo. Tiempo promedio por tarea fue de 1.11 hrs. Otros datos que se obtiene al analizar lo anterior son:
+
+\begin{itemize}
+	\item Estimación Trabajo Diario Grupo: 7.5 
+	\item Horas Disponibles en Sprint por cada integrante: 37.5 
+	\item Horas Disponibles  en Sprint del Grupo: 187.5 
+	\item Trabajo por dia promedio ideal 2.59 
+\end{itemize}
+
+Cabe señalar que si se trabajara de manera ideal, sobraría  tiempo equivalente a 187.5 hrs - 54.32 hrs = 133.18 hrs . Al pasar una semana se creyó que era necesario definir los roles de cada miembro del grupo para comenzar a trabajar o informarse desde ahora sobre el área en particular designada.
+
+A continuación se presentan los gráficos BurnDown y BurnUP con el fin de señalar la forma en que se trabajó a lo largo del Sprint:
+
+\figura{Gráfico de Burndown/Burnup}{
+	\includegraphics[width=14cm]{burndown/burndown2.jpg}
+}
+
+Como se aprecia en la imagen, se observa que en determinados periodos se trabajo una mayor cantidad, si bien alcanzamos a realizar la mitad del trabajo estimado a la fecha 5 de Abril, luego se disminuyó el trabajo realizado por dia a una frecuencia menor, en los últimos días se aumentó la frecuencia de trabajo para el los días antes de la entrega del informe. Otra cosa que se aprecia es que desde el primer dia en el que se definió el SPRINT se comenzó a trabajar por eso la grafica no comienza desde cero.
+
+
 
 %-------------------------------------------------------------------------------------
 \capitulo{OBSERVACIONES.}
@@ -719,7 +771,7 @@ Se añaden las observaciones realizadas al trabajo durante la 1º Presentación 
 		Detalle Observación & El RF41 es un requisito funcional del browser no de la aplicacion.\\ \hline
 		Acción a Realizar & Se elimina el RF41 (El usuario puede mantener sus sesión iniciada mediante la opción “Recordar sesión”).\\ \hline
 		Justificación & Este requisito es del navegador web, no de la aplicación en si.\\ \hline
-		Página del Informe & \\ \hline
+		Página del Informe & 22\\ \hline
 	\end{tabular}
 }
 
@@ -730,7 +782,7 @@ Se añaden las observaciones realizadas al trabajo durante la 1º Presentación 
 		Detalle Observación & El RNF4 tiene que especificar el estandar de los datos geo-espaciales.\\ \hline
 		Acción a Realizar & Redactar nuevamente en el requisito no funcional numero 4.\\ \hline
 		Justificación & En el requisito se debe especificar el formato estandar que utilizan los datos geo-espaciales.\\ \hline
-		Página del Informe & \\ \hline
+		Página del Informe & 23\\ \hline
 	\end{tabular}
 }
 
@@ -741,7 +793,7 @@ Se añaden las observaciones realizadas al trabajo durante la 1º Presentación 
 		Detalle Observación & Explicacion de los canales de comunicacion.\\ \hline
 		Acción a Realizar & Redactar un texto que muestre los canales de comunicacion utilizados en la realizacion de la entrega.\\ \hline
 		Justificación & Por proósitos de documetnación, en el informe se deben detallar los canales que utilizaron los participantes.\\ \hline
-		Página del Informe & \\ \hline
+		Página del Informe & 52\\ \hline
 	\end{tabular}
 }
 
@@ -754,16 +806,42 @@ Se añaden las observaciones realizadas al trabajo durante la 1º Presentación 
 		Detalle Observación & En el grafico de Burndown mostrar solo curvas reales.\\ \hline
 		Acción a Realizar & Cambiar el grafico de burdown con otro con solo las curvas reales del trabajo.\\ \hline
 		Justificación & Muchas lineas confunden al que observa el grafico, este deberia ser mas simple y solo mostrar las curvas reales.\\ \hline
-		Página del Informe & \\ \hline
+		Página del Informe & 56\\ \hline
 	\end{tabular}
 }
 
 %-------------------------------------------------------------------------------------
 \capitulonn{CONCLUSIONES.}
 
+Luego de finalizar la primera entrega del proyecto correspondiente a la ingeniería de requerimientos, se ha concluido en dos perspectivas que se estiman  adecuadas a la hora de realizar futuros trabajos, perspectiva a nivel de la ingeniería de requerimientos y la perspectiva de trabajo en equipo.
+Con respecto a la ingeniería de requerimientos y ciertos aspectos utilizados a la hora de realizar la entrega, se puede decir que las herramientas utilizadas y mencionadas con anterioridad en el informe, han facilitado muchos aspectos, agregando además que han ampliado la perspectiva del proyecto, logrando así entender en profundidad cómo funciona el sistema a crear,  cuales son estas funcionalidades y cómo se pueden crear a futuro. 
+Es por esto que se puede decir que esta etapa en la ingeniería de software es fundamental a la hora de iniciar el proyecto.
+En la otra perspectiva a nivel del trabajo en equipo, se puede concluir que se ha logrado una gran comunicación entre cada uno de los integrantes del grupo y una buena organización debido a esto mismo, en conjunto con las herramientas de carácter social se ha logrado un gran avance en relación al trabajo en equipo. 
+Finalmente como conclusión general se puede decir que se ha trabajado de manera íntegra cumpliendo a cabalidad los objetivos específicos tanto como generales que se han planteado.
+
 
 %-------------------------------------------------------------------------------------
+
 \capitulonn{BIBLIOGRAFÍA.}
 
+\begin{itemize}
+	\item Glassfish: https://glassfish.java.net/es/
+	\item MySQL: http://www.mysql.com/
+	\item Weka: http://www.cs.waikato.ac.nz/ml/weka/
+	\item Bibliografia: https://lucene.apache.org/
+	\item Netbeans: https://netbeans.org/
+	\item AngularJS : https://angularjs.org/
+	\item Bootstrap: http://getbootstrap.com/
+	\item JQuery: https://jquery.com/
+	\item CSS3: http://www.css3.info/
+	\item HTML5: http://www.w3schools.com/html/html5\_intro.asp
+	\item JavaScript: http://www.w3schools.com/js/
+	\item Android: https://www.android.com/
+	\item Git: http://git-scm.com/
+	\item Gradle: https://gradle.org/
+	\item JUnit : http://junit.org/
+	\item Diagrama de clases: http://users.dcc.uchile.cl/~psalinas/uml/modelo.html
+	\item Mision y Vision: http://es.slideshare.net/ponceguillermo71/concepto-de-mision-y-vision
+\end{itemize}
 
 \end{document}
