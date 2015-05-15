@@ -173,7 +173,7 @@
 
         \setcounter{tocdepth}{3}
 
-        \renewcommand{\contentsname}{\textbf{TABLA DE CONTENIDOS}}
+        \renewcommand{\contentsname}{\textbf{TABLA DE CONTENIDOS.}}
         \tableofcontents
         \thispagestyle{fancy}
 
@@ -181,8 +181,8 @@
 
         \renewcommand{\cftfigdotsep}{\cftdotsep}
 
-        \renewcommand*\listfigurename{\textbf{ÍNDICE DE FIGURAS}}
-        \addcontentsline{toc}{chapter}{ÍNDICE DE FIGURAS}
+        \renewcommand*\listfigurename{\textbf{ÍNDICE DE FIGURAS.}}
+        \addcontentsline{toc}{chapter}{ÍNDICE DE FIGURAS.}
         \listoffigures
         \thispagestyle{fancy}
 
@@ -191,8 +191,8 @@
 
         \renewcommand{\cfttabdotsep}{\cftdotsep}
 
-        \renewcommand*\listtablename{\textbf{ÍNDICE DE CUADROS}}
-        \addcontentsline{toc}{chapter}{ÍNDICE DE CUADROS}
+        \renewcommand*\listtablename{\textbf{ÍNDICE DE CUADROS.}}
+        \addcontentsline{toc}{chapter}{ÍNDICE DE CUADROS.}
         \listoftables
 
         \thispagestyle{fancy}
@@ -377,6 +377,7 @@
 
 \renewcommand{\baselinestretch}{1.5} %interlineado 1.5
 
+
 % Genera un capitulo no numerado, equivalente a \chapter*
 % Argumentos: {Titulo del capitulo}
 \newcommand{\capitulonn}[1]{
@@ -411,4 +412,32 @@
         \fontsize{10}{11}
        \fontfamily{ptm} %new times roman
         \selectfont
+}
+
+% Define una tabla no numerada
+% Argumentos {caption}{tabla}
+\newcommand{\tablann}[2]{
+        \fontsize{12}{14}
+        \fontfamily{ptm} %new times roman
+        \selectfont
+
+        \addtocounter{table}{1}
+
+
+        \begin{center}
+                \emph{Tabla \arabic{table}: #1} \\
+                        #2
+        \end{center}
+
+        \addcontentsline{lot}{table}{Tabla \arabic{table}: #1} 
+
+        \fontsize{10}{11}
+        \fontfamily{ptm} %new times roman
+        \selectfont
+}
+
+\newcommand{\biblio}{
+        \capitulonn{Bibliografía}
+        \printbibliography[heading=none]
+        \nocite{*}
 }
