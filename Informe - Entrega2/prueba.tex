@@ -42,33 +42,176 @@ Las vistas definidas en este modelo, son las siguientes:
 	\includegraphics[width=14cm]{modelo4+1vistas.png}
 }
 
+En la figura 1-1 se puede apreciar una representación del modelo 4+1 vistas, mostrando una relación entre las diferentes vistas y los actores y/o elementos que participan en cada una de ellas.
 
 \seccion{MODELO 3-DIMENSIONAL SUNTONE.}
 
+Este modelo es un framework que permite conocer y visualizar de manera global la arquitectura del sistema. Está compuesto por tres dimensiones que se detallan a continuación:
 
+\begin{itemize}
+\item \textbf{DIMENSIÓN: NIVELES LOGICOS.}
 
+El estándar de arquitectura para aplicaciones distribuidas, separa la lógica de la aplicación en un número determinado de niveles. Estos niveles representan una organización lógica y física de los componentes en una cadena ordenada entre los proveedores de servicios y consumidores. Los componentes dentro de un nivel suelen consumir los servicios prestados por otros componentes distintos en un nivel de proveedor adyacente, y a su vez proporcionan servicios a uno o más componentes en otro nivel de consumo adyacente.
+\newpage
 
+\item \textbf{DIMENSIÓN: NIVELES DE SERVICIO DE INFRAESTRUCTURA.}
 
-\seccion{MODELO VISTA-CONTROLADOR (MVC).}
- 
+Los componentes de software que interactúan entre sí, provenientes de aplicaciones empresariales distribuidas, requieren un conjunto subyacente de servicios e  infraestructura que permite a los componentes distribuidos comunicarse entre sí, coordinar su trabajo, implementar un acceso seguro, entre otras funciones. Este conjunto de servicios distribuidos constituye una infraestructura sobre la que se distribuyen los componentes que se pueden construir.
+
+\item \textbf{DIMENSIÓN: CALIDAD DE SERVICIO.}
+
+Las dos dimensiones arquitectónicas anteriores (capas lógicas y niveles de servicio de infraestructura), definen en gran medida los aspectos lógicos de la arquitectura. Sin embargo, una dimensión igualmente importante de cualquier solución implementada, es la capacidad de cumplir con requisitos de calidad de servicio. Como los servicios de Internet y de comercio electrónico se han vuelto más críticos para las operaciones de negocio, tanto el rendimiento como la disponibilidad, seguridad, escalabilidad y capacidad de servicio, se ha convertido en un requisito clave de gran escala para arquitecturas de despliegue de alto rendimiento. En otras palabras, el cumplimiento de los requerimientos del negocio en relación con una serie de cualidades importantes de servicios, se ha convertido en una dimensión importante de la arquitectura. 
+\end{itemize}
+
+Las tres dimensiones arquitectónicas discutidas por separado en los apartados anteriores, en su conjunto proporcionan un marco para entender el papel de cualquier aplicación o componente de infraestructura dentro de un diseño arquitectónico. Básicamente, componentes distribuidos en cada nivel lógico de una arquitectura de despliegue (la primera dimensión) necesitan ser apoyados por los servicios de infraestructura adecuados (la segunda dimensión). Cada componente dentro de esa matriz de dos dimensiones deben implementarse de acuerdo a los requisitos propuestos con el fin de mejorar la  calidad del servicio (la tercera dimensión).
+
+Las tres dimensiones anteriormente detalladas, se pueden representar en un cubo, ubicando cada una de ellas en una cara del mismo, tal como lo muestra la figura 1-2.
+
+\newpage
+\figura{Modelo 3-Dimensional SunTone.}{
+	\centering
+	\includegraphics[width=13cm]{cuboSunTone.png}
+}
+
 \seccion{PATRONES DE DISEÑO.}
 
+Los patrones de diseño son el esqueleto de las soluciones a problemas comunes en el desarrollo de software. En otras palabras, brindan una solución ya probada y documentada a problemas de desarrollo de software que están sujetos a contextos similares. Se debe tener presente los siguientes elementos de un patrón: su nombre, el problema (cuando aplicar un patrón), la solución (descripción abstracta del problema) y las consecuencias (costos y beneficios).
+
+Los patrones de diseño se pueden clasificar en tres tipos distintos:
+
+\begin{itemize}
+\item \textbf{Patrones Creacionales}: la función de estos patrones es la inicialización y configuración de distintos objetos, en otras palabras, se encargan de la creación de objetos para su posterior utilización.
+\item \textbf{Patrones Estructurales}: se encargan de separar la interfaz de la implementación. Se ocupan de cómo se agrupan las clases y objetos, para formar estructuras más grandes.
+\item \textbf{Patrones de Comportamiento}: como el nombre lo indica, estos patrones se encargan de describir la comunicación que existe entre los objetos o las clases mas que describir éstos como tal.
+\end{itemize}
+
+\subseccion{MODELO VISTA-CONTROLADOR (MVC).}
+
+La mayoría de las arquitecturas de aplicaciones web se basan en este patrón o variaciones de éste, y a su vez la plataforma a utilizar (Java EE) trabaja bajo esta lógica. El modelo MVC, se caracteriza por ser un patrón que separa la lógica de negocio de la interfaz de usuario, facilitando así la evolución por separado de ambas capas.
+
+\begin{itemize}
+\item La capa \textbf{modelo} representa la realidad.
+\item La capa \textbf{controlador}, conoce los métodos y atributos del modelo. Recibe y realiza lo que el usuario quiere hacer, en otras palabras, gestiona la funcionalidad del sistema.
+\item La capa \textbf{vista} muestra un aspecto del modelo y es utilizada por la capa modelo para lograr la interacción con el usuario. (No existe comunicación directa entre la capa modelo y la capa vista)
+\end{itemize}
 
 
+\subseccion{PATRONES DE DISEÑO EN JavaEE}
 
-\seccion{PATRONES DE DISEÑO EN JavaEE}
+La arquitectura de J2EE se divide cuatro capas principalmente: Presentación – Negocios – Integración – Recursos (Datos). Dentro de estas capas se presentan distintos patrones utilizados (a excepcion de la capa de recursos) detallados a continuación:
 
+\begin{itemize}
+\item \textbf{CAPA DE PRESENTACIÓN.}
 
+\begin{itemize}
+\item \textbf{\textsl{Decorating Filter /Intercepting Filter}}: el mecanismo de manejo de peticiones de la capa de presentación recibe muchos tipos diferentes de peticiones, cada uno de los cuales requiere varios tipos de procesamiento. Algunas peticiones  simplemente requieren su reenvío al componente manejador apropiado, mientras que otras peticiones deben ser modificadas, auditadas, o descomprimidas antes de su procesamiento posterior.
 
+\item \textbf{\textsl{Front Controller/Front Component}}: el mecanismo de manejo de peticiones de la capa de presentación debe controlar y coordinar el procesamiento de todos los usuarios a través de varias peticiones. Dichos mecanismos de control se  pueden manejar de una forma centralizada o descentralizada. 
+ 
+Es un objeto que acepta todos los requerimientos de un cliente y los direcciona a manejadores apropiados. El patrón \textsl{Front Controller} podría dividir la funcionalidad en 2 diferentes objetos: el \textsl{Front Controller} y el \textsl{Dispatcher}. En ese caso, El \textsl{Front Controller} acepta todos los requerimientos de un cliente y realiza la autenticación. El \textsl{Dispatcher}, por su parte, direcciona los requerimientos a manejadores apropiados.
 
+\item \textbf{\textsl{View Helper}}: el sistema crea el contenido de la presentación, lo que requiere el procesamiento de datos de negocio dinámicos. Normalmente es un objeto \textsl{helper} que encapsula la lógica de acceso a datos en beneficio de los componentes de la presentación. Por ejemplo, los \textsl{JavaBeans} pueden ser usados como patrón \textsl{View Helper} para las páginas JSP.
 
+\item \textbf{\textsl{Composite view}}: las páginas Web sofisticadas presentan contenido de varias fuentes de datos, utilizando varias subvistas que completan una sola página. Además, varios individuos con diferentes habilidades contribuyen al desarrollo y mantenimiento de esas páginas Web. Se puede ver como un objeto vista que está compuesto de otros objetos vista, por ejemplo, una página JSP que incluye otras páginas JSP y HTML usando la directiva \textsl{include} o el \textsl{action include} es un patrón \textsl{Composite View}.
+
+\item \textbf{\textsl{Service to Worker}}: el sistema controla el flujo de ejecución y accede a los datos de negocio, desde los que crea el contenido de la presentación.
+Es como el patrón de diseño MVC con el Controlador actuando como \textsl{Front Controller} pero con un detalle importante: aquí el \textsl{Dispatcher} (el cual es parte del \textsl{Front Controller}) usa \textsl{View Helpers} a gran escala y ayuda en el manejo de la vista.
+
+\item \textbf{\textsl{Dispatcher View}}: cumple con la misma función que el patrón \textsl{Service to Work} pero contrario a éste, aquí el \textsl{Dispatcher} no usa \textsl{View Helpers} y realiza muy poco trabajo en el manejo de la vista. El manejo de la vista es manejado por los mismos componentes de la Vista.
+\end{itemize}
+
+\item \textbf{CAPA DE NEGOCIOS.}
+
+\begin{itemize}
+\item \textbf{\textsl{Business Delegate/ Bussines Object}}: un sistema multi-capa distribuido requiere invocación remota de métodos para enviar y recibir datos entre las capas. Los clientes están expuestos a la complejidad de tratar con componentes distribuidos. Se puede ver como un objeto que reside en la capa de presentación y en beneficio de los otros componentes de la capa de presentación llama a métodos remotos en los objetos de la capa de negocios.
+
+\item \textbf{\textsl{Value Object/ Data Transfer Object/ Replicate Object}}: cuando las aplicaciones cliente necesitan intercambiar datos con \textsl{Beans Enterprise} se puede crear un objeto serializable para la transferencia de datos sobre la red.
+
+\item \textbf{\textsl{Session Facade/Session Entity Facade/Distributed Facade}}: los \textsl{Beans Enterprise} encapsulan lógica y datos de negocio y exponen sus interfaces, y con ellos la complejidad de los servicios  distribuidos, a la capa de cliente. El uso de un bean de sesion como una fachada (\textsl{facade}) para encapsular la complejidad de las interacciones entre los objetos de negocio y participantes en un flujo de trabajo. El \textsl{Session Facade} maneja los objetos de negocio y proporciona un servicio de acceso uniforme a los clientes.
+
+\item \textbf{\textsl{Aggregate Entity/Composite Entity}}: puede ser visto como un bean entidad que es construido o es agregado a otros beans de entidad. Los beans de entidad no se han pensado para representar todos los objetos persistentes del modelo y son mejores  para objetos de negocio persistentes genéricos.
+
+\item \textbf{\textsl{Value Object Assembler/Transfer Object Assambler}}: en una aplicación de la plataforma JavaEE, los componentes de negocio del lado del servidor se implementan utilizando \textsl{beans} de sesión, \textsl{beans} de entidad, DAOs, etc. Los clientes de la aplicación necesitan acceder a datos que frecuentemente se componen de múltiples objetos. Un objeto que reside en la capa de negocios y crea \textsl{Value Objects} cuando es requerido.
+
+\item \textbf{\textsl{Value List Handler/Page-by-Page Iterator/Paged List}}: el cliente le pide al servicio una lista de ítems para su presentación. El número de ítems de la lista no se conoce y puede ser muy grande en muchas circunstancias. Se puede ver como un objeto que maneja la ejecución de consultas SQL, caché y procesamiento del resultado. Usualmente implementado como \textsl{beans} de sesión.
+
+\item \textbf{\textsl{Service Locator}}: la búsqueda y creación de servicios implican interfaces complejas y operaciones de red. Consiste en utilizar un objeto \textsl{Service Locator} para abstraer toda la utilización JNDI y para ocultar la complejidad de la creación del contexto inicial, de búsqueda de objetos home EJB y recreación de objetos EJB. Varios clientes pueden reutilizar el objeto \textsl{Service Locator} para reducir la complejidad del código, proporcionando un punto de control.
+\end{itemize}
+
+\item \textbf{CAPA DE INTEGRACIÓN.}
+
+\begin{itemize}
+\item \textbf{\textsl{Data Access Object/Service Activator}}: el acceso a los datos varía dependiendo de la fuente de los datos. El acceso al almacenamiento persistente, como una base de datos, varía en gran medida dependiendo del tipo de almacenamiento
+(bases de datos relacionales, bases de datos orientadas a objetos, ficheros planos, entre otros) y de la implementación del vendedor. Consiste en utilizar un objeto de acceso a datos para abstraer y encapsular todos los accesos a la fuente de datos. El DAO maneja la conexión con la fuente de datos para obtener y almacenar datos. 
+
+\item \textbf{\textsl{Service Activator}}: los \textsl{beans enterprise} y otros servicios de negocio, necesitan en ocasiones una forma de activarse asíncronamente.
+Se utiliza para recibir peticiones y mensajes asíncronos de los clientes. Cuando se recibe un mensaje, el \textsl{Service Activator} localiza e invoca a los métodos de los componentes de negocio necesarios para cumplir la petición de forma asíncrona.
+\end{itemize}
+
+\end{itemize} 
 
 %-------------------------------------------------------------------------------------
 \capitulo{MODELO 4+1 VISTAS.}
 
+Como se mencionó en el marco teórico (ver sección 1.1), el modelo 4+1 vistas se basa en 4 vistas principales además de los escenarios que se presenten. Las vistas desarrolladas, correspondientes a la aplicación, se presentan a continuación.
+
 \seccion{VISTA LÓGICA.}
 
+\figura{Vista Lógica de aplicación \textsl{BitPhoto}.}{
+	\centering
+	\includegraphics[width=17cm, height=12cm]{vistaLogica.png}
+}
+
+En esta ocasión se tienen diez módulos distintos para representar las funcionalidades que va a poseer el sistema. A continuación se procede a describir que realiza cada uno de éstos.
+
+\begin{itemize}
+\item \textbf{Módulo Gestión Fotográfica}: en este módulo se representan las funcionalidades que tienen relación a la carga de fotografías por parte del usuario, además de las funcionalidades de realizar las respectivas descripciones a éstas, incluyendo así la vista en el sistema de las fotografías y sus movimientos en la base de datos, es decir, la creación, actualización, eliminación y las consultas correspondientes que se pueden realizar con respecto a éstas.
+
+\item \textbf{Módulo Gestión de Comentarios}: acá se ven las funcionalidades de la realización de un comentario, ya sea en una fotografía que ha sido cargada por el mismo usuario o por algún otro usuario al cual se está siguiendo, además de marcar los favoritos que el usuario desea realizar, así como también el manejo de los \textsl{tags} que pueden estar contenidos en los comentarios.
+
+\item \textbf{Módulo Clasificador}: en este módulo se representan las funcionalidades con respecto la tecnología WEKA, donde se desea clasificar cada uno de los comentarios con una evaluación, éstas pueden ser positivo, negativo o neutral según corresponda.
+
+\item \textbf{Módulo Gestión de Álbumes}: acá se ven las funcionalidades que pertenecen a los álbumes, es decir, seleccionar una fotografía de portada del álbum o agregar un nombre a éste, además de agregar una descripción correspondiente si el usuario lo desea. En resumen, se representa la funcionalidad de la visualización de los álbumes en la vista correspondiente a estos.
+
+\item \textbf{Módulo Gestión del Mapa Mundial}: en este módulo se representan las funcionalidades con respecto al mapa mundial, en el que se podrá realizar una búsqueda de fotografías populares por medio de una ubicación geoespacial.
+
+\item \textbf{Módulo Gestión de Cámaras}: se representan las funcionalidades de asociación de una cámara a una fotografía, es decir, se mostrarán las características de una cámara en las fotografías que han sido tomadas con ésta.
+
+\item \textbf{Módulo Gestión de Actividades}: en este módulo se representa el manejo de los movimientos que realizan los seguidores y el usuario como tal, de manera que el usuario pueda visualizar los últimos eventos realizados por él y sus seguidores.
+
+\item \textbf{Módulo Gestión de Usuarios}: se representan las funcionalidades que se pueden realizar en consideración al usuario, éstas contemplan el manejo de un perfil, donde él podrá realizar algunos cambios en su información personal.
+
+\item \textbf{Módulo Buscador}: en este módulo se representa la función de realizar una búsqueda de usuarios y fotografías en el sistema. Un usuario puede buscar ciertas fotografías que tengan asociadas las palabras claves que se han ingresado en el buscador y mediante los filtros necesarios, se entregan los resultados.
+
+\item \textbf{Módulo Stream Web System}: en este último módulo se representan la funcionalidades correspondientes a la visualización de las últimas actividades realizadas, siendo el equivalente a las publicaciones de los usuarios en el sistema correspondiente a mostrar las ultimas fotografías con su respectiva información.
+\end{itemize}
+
+Además, es importante mencionar que las relaciones existentes en el modelo de la figura 2-1, representan usabilidad. A modo de ejemplo, se tiene el Módulo Gestión de Mapa Mundial, el que utiliza el Módulo Gestión Fotografías, debido a que para realizar la visualización de las fotografías que están en la ubicación deseada, necesita de éste. 
+
 \seccion{VISTA DE PROCESOS.}
+
+El diagrama de procesos es una representación gráfica que permite ver los distintos procesos (como el nombre lo indica) que ocurren en el desarrollo de diferentes procedimientos. Esta vista se puede dividir en distintas capas que permiten ver los procesos desde lo más general hasta lo más específico, revisando subprocesos involucrados. Las distintas capas se detallan a continuación.
+
+\subseccion{DIAGRAMA DE PROCESOS: CAPA 0.}
+
+\figura{Capa 0 del Diagrama de Procesos.}{
+	\centering
+	\includegraphics[width=8cm]{ProcesosCapa0.png}
+}
+
+\subseccion{DIAGRAMA DE PROCESOS: CAPA 1.}
+
+\figura{Capa 1 del Diagrama de Procesos.}{
+	\centering
+	\includegraphics[width=18cm]{ProcesosCapa1.png}
+}
+
+\subseccion{DIAGRAMA DE PROCESOS: CAPA 2.}
+
+%\figura{Capa 2 del Diagrama de Procesos.}{
+	%\centering
+	%\includegraphics[width=16.7cm]{vistaLogica.png}
+%}
 
 \seccion{VISTA FÍSICA.}
 
