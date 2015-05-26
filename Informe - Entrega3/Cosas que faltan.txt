@@ -1,0 +1,29 @@
+
+
+- Objetivos Generales y particulares.
+
+- No sé si explicar un poco a que se refiere cada caso de uso.
+
+- Explayarse más en la explicación de las clases del diagrama de clases y desarrollar el por qué lo hicimos así
+  (explicar las relaciones, etc etc).
+
+- Colocar las vistas de los prototipos e ir explicando un poco (definición del estándar de la interfaz).
+
+- Base de datos, colocar el diagrama e ir explicando por qué hicimos cada relación, ciertos atributos, etc etc.
+
+- Agregar la definición de herramientas.
+
+- Agregar la wea de los gráficos y todo lo del Burndown.
+
+- Agregar las observaciones y como las arreglamos, como explicó Rodrigo (informe, n observación, observación, acción, 
+justificación, paginas de tratamiento).
+
+- Conclusiones.
+
+- Bibliografía
+
+
+* Cabros, acuérdense de citar las figuras cuando vayan explicando cosas, es importante eso.
+* Nicolás, para explicar mejor las relaciones de las clases y todo eso, hazlo en la sección "Clases". Yo soy de la idea de 
+hacer una explicación más amplia y no tan "clase x: bla bla", sino ir explicando más el por qué de las relaciones con casa
+clase :)     
