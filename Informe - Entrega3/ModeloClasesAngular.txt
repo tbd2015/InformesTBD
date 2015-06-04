@@ -1,0 +1,9 @@
+El diagrama de clases en AngularJS tiene ciertas particularidades. Primero que todo, el diagrama está fuertemente influenciado por la Arquitectura MVC (Modelo-Vista-Controlador) y además las estructuras de código en AngularJS no son clases en sí mismas, sino que son módulos que pueden cumplir diferentes propósitos según son definidos.
+
+Dentro de los tipos de módulos tenemos los Controladores (encargados de intermediar las interacciones entre Modelo y Vista), las Factorías (encargadas de ofrecer objetos Javascript a través de funciones implementables) y los Servicios (encargados de recibir peticiones y procesarlas con la capa de Negocio).
+
+Las Factorías y Servicios viven en la capa de Modelo, los Controladores viven en su capa homónima y los archivos HTML residen en la capa de Vista.
+
+Cada vista HTML tiene un Controlador asignado, y cada Controlador puede llamar a una o más Factorías y Servicios, como se ve en la Figura del diagrama de clases de AngularJS.
+
+La disposición de las clases está estrictamente ligado e impuesto por la arquitectura, en este sentido es una ventaja, ya que simplifica la tarea del diseño arquitectural a nivel de Aplicación Web.
