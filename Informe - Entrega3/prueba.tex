@@ -10,17 +10,39 @@
 
 \capitulonn{INTRODUCCIÓN.}
 
+En esta entrega, se cumple el objetivo de mostrar el Diseño Detallado de \textsl{BitPhoto} (la plataforma propuesta para la asignatura de Taller de Bases de Datos). Dentro del Diseño Detallado se profundiza mucho más en la arquitectura de la aplicación, especificando detalles como mencionar las clases y módulos a utilizar en cada parte del proyecto, junto con su comportamiento e interacción.
+
+Además en este informe se entrega un detalle completo y acabado de los Casos de Uso orientados a la funcionalidad del programa a nivel usuario. Con éstos se podrá delimitar el alcance de la solución y ofrecer otra forma de medir el avance en la implementación.
+
+Cada parte del programa (aplicación web, módulo de negocio, buscador y aplicación \textsl{Android}) tendrá especificado dentro de este informe un diagrama de clases, en el cual se mostrará cómo se relacionan entre sí dichas clases y sus subdivisiones en categorías.
+
+Se incluye también modelos de comportamiento (diagramas de secuencia) para ilustrar la conexión de clases y módulos del programa para mostrar la integración de la aplicación entre las partes de ésta. Además estos diagramas permiten ejemplificar a nivel de arquitectura de software la implementación de los Casos de Uso.
+
+Otro elemento incluído en el presente informe es un Diccionario de Datos con las definiciones de las tablas, relaciones y elementos propios de la Base de Datos de la aplicación.
+
+Para esta entrega se planea realizar los Casos de Uso de \textsl{visualizar fotografía} y \textsl{visualizar álbum}, descritos en la sección de Casos de Uso.
+
+Por último, se incluye una explicación breve de los avances logrados a la fecha respecto de la implementación práctica de la aplicación BitPhoto, junto con el avance de ésta medida con la Burndown Chart.
 
 
 %-------------------------------------------------------------------------------------
 \capitulo{MARCO TEÓRICO.}
 
-\seccion{DIAGRAMA DE CASOS DE USO.}
+\seccion{CASOS DE USO.}
 
+Los casos de uso son una técnica utilizada en la ingeniería de software que especifica el comportamiento del sistema, éstos fueron introducidos por primera vez por Jacobson en 1992. Los casos de uso describen el comportamiento que adquiere el sistema al interactuar con entes externos al sistema, como por ejemplo el o los usuarios que solicitan acciones al sistema para que éste las realice. Éstos fueron introducidos en el lenguaje estándar de modelamiento \textsl{UML} y dentro de éste es donde se crea el diagrama de casos de uso, usado para ilustrar los requerimientos del sistema para mostrar como reacciona a eventos que se producen dentro o fuera de éste, se presenta la interacción que tiene cada usuario participante con los casos de uso del sistema, al observar uno de éstos diagramas se pueden diferenciar las distintas acciones que puede realizar cada usuario al interactuar con el sistema. Un caso de uso puede abarcar varias funciones del sistema.
 
+\seccion{DIAGRAMA DE CLASES.}
 
-\seccion{DIAGRAMAS DE SECUENCIA.}
+Este es un diagrama incluido en el lenguaje \textsl{UML} de forma estática que describe la estructura de un sistema, indicando las clases que componen a éste, los atributos que tienen las clases y los métodos de cada una de ellas, también de presentarse las relaciones que existen entre las clases que componen el sistema, para estas relaciones se diferencian varios tipos.
 
+Entre las relaciones que pueden existir entre las clases, se encuentra la \textbf{Herencia} que indica que existen subclases que heredan los métodos y atributos de una clase mayor, es decir, estas subclases tienen las mismas características que la clase a la que heredan, además pueden tener sus propios métodos o atributos. 
+
+Otra relación existente es la \textbf{Agregación} que se representa por un rombo blanco o sin rellenar, representa que una clase incluye a otra pero el tiempo de vida de la clase incluida es independiente de la clase que esta incluye. Parecida a la relación anterior, está la composición que se representa por un rombo negro o con relleno negro, esta relación representa que el tiempo de vida del objeto de la clase que es compuesto depende directamente del tiempo de vida del objeto de la clase que lo compone. 
+
+Existe además la \textbf{Asociación} que representa que un objeto está asociado con otro de una clase distinta, pero sin presentar una relación fuerte entre estos, se representa por una flecha con línea común. La ultima de estar relación es la \textbf{Dependencia} que representa que una clase es instancia de otra, por lo tanto es dependiente de esta clase, esta relación se representa por una flecha con línea punteada. 
+
+Todas las relaciones mencionadas anteriormente, cuentan son su respectiva cardinalidad que representa la cantidad de objetos que se pueden instanciar en cada relación entre las clases.
 
 
 %-------------------------------------------------------------------------------------
@@ -28,28 +50,103 @@
 
 \seccion{DIAGRAMA JAVAEE.}
 
+\subseccion{DIAGRAMA GENERAL.}
+
+A continuación se presenta el diagrama Modelo-Controlador Correspondiente al servicio web implementado mediante JavaEE. Para facilitar la comprensión del diagrama se dividirá el esquema general en 3 partes con el fin de facilitar la vista del modelo. 
+
 \figura{Diagrama de Clases JavaEE (MVC).}{
-	\includegraphics[width=16cm]{DiagramaModeloControlador.jpg}
+	\includegraphics[width=17cm]{DiagramaModeloControlador.jpg}
 }
 
+El esquema general de las capas que se presentan en la imagen es: \textbf{Entidad - Facade - EJB Logical - Interface EJB - Service (Cadena 1)}.
+
+\begin{itemize}
+\item \textbf{Entidad}: : Corresponde a las clases entidades que permiten la comunicación con la base de datos. Estas entidades son utilizadas por las \textsl{Facade} para la persistencia de información de ser necesaria.
+
+\item \textbf{Facade}: Heredan de \textsl{AbstractFacade} que entrega la estructura para los métodos que trabajan sobre las entidades. Los \textsl{Facades} entregan soporte a los \textsl{EJB Logical} para trabajar con la información de la base de datos y persistir esta.
+
+\item \textbf{EJBLogical}: : Corresponden a la lógica de la aplicación, implementan los métodos necesarios para los servicios a entregar en el \textsl{web service}, se comunican con los \textsl{Facade} y con los diferentes \textsl{JAR} de \textsl{Lucene} y \textsl{Weka} para la implementación de los determinados servicios. Cada \textsl{EJBLogical} expone sus métodos para que los utilicen otros \textsl{EJBLogical} o los servicios mediante una interfaz (\textsl{Interface EJB}). 
+
+\item \textbf{Interface EJB}: Existe uno por cada \textsl{EJBLigical}, y cada uno de los \textsl{EJBLogical} debe implementar todos los métodos definidos por la interfaz. Esta interfaz sirve para separar la lógica de los diferentes servicios que se pueden implementar.
+
+\item \textbf{Service}: Son servicios que utilizan los diversos métodos entregados por las \textsl{Interface EJB} para generar los servicios pertinentes. Pueden utilizar más de un método y estos métodos pueden pertenecer a diversas interfaces. Utilizan los métodos propios de \textsl{HTTP} para entregar los servicios.
+\end{itemize}
+
+\figura{Diagrama de Clases JavaEE, parte 1).}{
+	\includegraphics[width=11cm]{DiagramaModeloControladorParte1.jpg}
+}
+
+En la figura 2-2 se presenta la implementación necesaria para generar los servicios correspondientes a Album , Camara y Etiqueta. Como se aprecia el servicio correspondiente al álbum utiliza más de una interfaz con el fin de agrupar funcionalidades entregadas por la lógica de negocio para mejorar los servicios entregados. A su vez cada interfaz se comunica como lo señala la cadena 1.
+
+
+\figura{Diagrama de Clases JavaEE, parte 2.}{
+	\includegraphics[width=11cm]{DiagramaModeloControladorParte2.jpg}
+}
+
+En la figura 2-3 se presenta la implementación necesaria para generar los servicios correspondientes a Evento , Foto y Lugar. Como se aprecia el servicio correspondiente a la foto utiliza más de una interfaz con el fin de agrupar funcionalidades entregadas por la lógica de negocio para mejorar los servicios entregados. A su vez cada interfaz se comunica como lo señala la cadena 1.
+
+\figura{Diagrama de Clases JavaEE, parte 3.}{
+	\includegraphics[width=11cm]{DiagramaModeloControladorParte3.jpg}
+}
+
+En la figura 2-4 se presenta la implementación necesaria para generar los servicios correspondientes a Tag , Usuario y Login. Como se aprecia los servicios correspondientes al Tag y Usuario, utiliza más de una interfaz con el fin de agrupar funcionalidades entregadas por la lógica de negocio para mejorar los servicios entregados. A su vez cada interfaz se comunica como lo señala la cadena 1.
+
+\newpage
+\subseccion{DIAGRAMA DE ENTITIES.}
+
+A continuación se presenta el diagrama de clases correspondiente a la capa Modelo en MVC, donde se presenta la relación que existe entre clases de entidades (\textsl{Entity}), relaciones coherentes con las tablas mapeadas de la base de datos.
 
 \figura{Diagrama de Clases JavaEE (Entities).}{
 	\includegraphics[width=16.5cm]{DiagramaEntities.jpg}
 }
 
+En la Figura 2-5, se observa la relación entre entidades. Las flechas indican asociación, indican que la entidad que tiene una punta de flecha es una llave foránea de la entidad que la conecta. Se aprecia que existe la entidad foto la cual junto con usuario forman parte de las entidades principales de la capa de modelo ya que existe una gran cantidad de entidades que utilizan las \textsl{primarykeys} de estas entidades como llaves foráneas.
+
 \figura{Diagrama de Clases JavaEE (Entities), parte 1.}{
-	\includegraphics[width=14cm]{DiagramaEntitiesParte1.jpg}
+	\includegraphics[width=10cm]{DiagramaEntitiesParte1.jpg}
 }
 
+Las entidades y relaciones mostradas en la figura 2-6 se detallan a continuación:
+
+\begin{itemize}
+\item Entidad \textbf{Cámara} se relaciona con la entidad \textbf{Foto}, con el fin de representar qué cámara se utilizó para la captura de la fotografía.
+\item Entidad \textbf{Lugar} se relaciona con la entidad \textbf{Foto}, con el fin de señalar cuáles fueron los lugares en los cuales de tomo o localizó determinada fotografía.
+\item Entidad \textbf{AlbumFoto} se relaciona con las entidades \textbf{Foto} y \textbf{Album}, con el fin de señalar que fotografías se encuentran en determinados álbumes.
+\item Entidad \textbf{AlbumPermiso} y \textbf{FotoPermiso} se relacionan con las entidades \textbf{Foto} y \textbf{Álbum} respectivamente y ambas con la entidad Permiso, con el fin de entregar a las fotografías y álbumes del usuario un grado de permiso en el sistema.
+\item Entidad \textbf{TagFoto} se relaciona con las entidades \textbf{Foto} y \textbf{Tag}, con el fin de representar que para una fotografía se puede utilizar determinado tag. Representa relación muchos a muchos entre \textbf{Foto} y \textbf{Tag}.
+\end{itemize}
+
 \figura{Diagrama de Clases JavaEE (Entities, parte 2).}{
-	\includegraphics[width=15cm]{DiagramaEntitiesParte2.jpg}
+	\includegraphics[width=11cm]{DiagramaEntitiesParte2.jpg}
 }
+
+Las entidades y relaciones mostradas en la figura 2-7 se detallan a continuación:
+
+\begin{itemize}
+\item Entidad \textbf{Evento} se relaciona con la entidad \textbf{Usuario}, con el fin de representar que cada usuario tendrá un historial de eventos en el sistema.
+\item Entidad \textbf{UsuarioUsuario} se relaciona con la entidad \textbf{Usuario}, con el fin de representar cuando un usuario sigue a otro usuario de la aplicación con el objetivo de ver sus fotografías.
+\item Entidad \textbf{TagUsuario} se relaciona con las entidades \textbf{Usuario} y \textbf{Tag}, con el fin de representar que un usuario puede utilizar más de un tag, \textbf{TagUsuario} se encarga de representar la relación muchos a muchos entre \textbf{Usuario} y \textbf{Tag}.
+\item Entidad \textbf{ComentarioFoto} se relaciona con las entidades \textbf{Usuario} y \textbf{Foto}, con el fin de representar que un usuario puede comentar determinadas fotografías. A su vez representa la relación muchos a muchos entre \textbf{Foto} y \textbf{Usuario} enfocada a los comentarios que estos últimos realizan sobre las fotografías.
+\item Entidad \textbf{Etiqueta} se relaciona con las entidades \textbf{Usuario} y \textbf{Foto}, con el fin de representar que un usuario puede ser etiquetado en determinada fotografía.
+\item Entidad \textbf{Favorito} se relaciona con las entidades \textbf{Usuario} y \textbf{Foto}, con el fin de representar cuando un usuario agrega una fotografía a sus favoritas.
+\end{itemize}
+
+\newpage
+\subseccion{DIAGRAMA DE BUSCADOR.}
+
+A continuación se presenta el diagrama de clases correspondiente a la implementación del Buscador. Representado por la capa de Modelo - Controlador.
+
+\figura{Diagrama de Clases Buscador.}{
+	\includegraphics[width=11cm]{DiagramaBuscador.jpg}
+}
+
+Como se observa en la figura 2-8,  existe un servicio \textsl{BuscadorService} el cual mediante la biblioteca \textsl{javax.ws.rs} especializada en la creación de servicios \textsl{rest} mediante \textsl{EJBs}. Esta clase servicio se comunica con la interfaz local \textsl{BuscadorLocal}, que contiene los métodos para el buscador implementados por el \textsl{BuscadorEJB} que se comunica con el modelo mediante los \textsl{facade} correspondientes a la Foto, Tag y Lugar, además de comunicarse con el \textsl{Package} o \textsl{JAR} correspondiente a la implementación del buscador señalada en la sección 2.3.
 
 \newpage
 \seccion{DIAGRAMA WEB-APP (ANGULAR JS).}
 
 \figura{Diagrama de Clases Angular JS.}{
-	\includegraphics[width=18.5cm]{DiagramaClasesAngularJS.png}
+	\includegraphics[width=17cm]{DiagramaClasesAngularJS.png}
 }
 
 El diagrama de clases en \textsl{AngularJS} tiene ciertas particularidades. Primero que todo, el diagrama está fuertemente influenciado por la Arquitectura \textsl{MVC} (Modelo-Vista-Controlador), además las estructuras de código en \textsl{AngularJS} no son clases en sí mismas, sino que son módulos que pueden cumplir diferentes propósitos según son definidos.
@@ -93,11 +190,16 @@ Continuando con la sección izquierda del diagrama de clases, se pueden observar
 \newpage
 \seccion{DIAGRAMA ANDROID.}
 
+En el siguiente diagrama, se muestran las clases que se deberán implementar para la aplicación en el sistema operativo \textsl{Android}.
+
 \figura{Diagrama de Clases Android.}{
 	\includegraphics[width=18cm]{DiagramaClasesAndroid.png}
 }
- 
 
+Al observar el diagrama presentado en la figura 2-9, se puede observar que existen dos tipos de archivos, estos son los \textsl{.java} y \textsl{.xml}. Los primeros son clases o \textsl{Activitys}, estos en \textsl{Android} son las pantallas que se presentan al usuario; \textsl{MainActivity} representa la primera pantalla que se muestra en donde el usuario debe iniciar sesión para entrar  a la aplicación. De esta \textsl{Activity} se desprenden las demás vistas a las que se puede entrar, como por ejemplo la \textsl{Activity} de nombre \textsl{InicioActivity} es donde ingresa el usuario luego de ser verificado por el sistema, aquí el usuario puede ver las actividades recientes de contactos y las fotos subidas por éstos, en esta vista el usuario tiene la opción para desplazarse por las demás \textsl{Activitys} disponibles. Existe una \textsl{Activity} para cuando el usuario quiera subir una foto, esta es \textsl{FotoActivity}, en donde el usuario puede seleccionar la imagen a subir al sistema y editar la información de ésta. En \textsl{AlbumActivity} el usuario puede visualizar los álbumes que tiene en su cuenta y las fotos que componen a éstos. También existe la vista de \textsl{PerfilActivity} que se utiliza para visualizar el perfil del usuario en la sesión actual. Por último, para las foto geo-localizadas está la \textsl{MapActivity}, que muestra al usuario el mapa mundial de fotos con sus distintas fotografías que han sido localizadas. En el diagrama se observa una dependencia de todas estas clases a \textsl{MainActivity}, ya que es esta la que inicia la aplicación y las demás no pueden existir sin que ésta exista, por esa razón las cardinalidades asociadas a cada una de las relaciones. 
+
+El segundo tipo de archivos que se observa son los \textsl{.xml}, éstos son los \textsl{Layout} de la aplicación y es donde se diseña la vista para que sea visualizada por el usuario. Cada una de las \textsl{Activitys} anteriormente mencionadas cuenta con su archivo de vista respectivo como se puede apreciar en el diagrama. Éstos son los archivos con los que interactúa el usuario al observar la aplicación, pero las clases o \textsl{Activitys} mencionadas son las que realizan las acciones que el usuario comanda.
+ 
 %-------------------------------------------------------------------------------------
 \capitulo{CASOS DE USO.}
 
@@ -388,15 +490,251 @@ El usuario no ha seleccionado una fotografía para subir al sistema, el sistema 
 %-------------------------------------------------------------------------------------
 \capitulo{DIAGRAMAS DE SECUENCIA.}
 
-A continuación, se muestran los diagramas de secuencia para plasmar el modelo de comportamiento de los casos de uso que se desearon implementar.
+A continuación se presentan los diagramas de secuencia correspondientes a las implementaciones realizadas para esta entrega que son Visualizando Álbumes del Usuario y Visualizando Fotos del Usuario.
 
-%\figura{Implementación login.}{
-%	\includegraphics[width=16.5cm]{login1.png}
-%}
+\seccion{Visualizando Fotos Usuario.}
 
-%\figura{Implementación login.}{
-%	\includegraphics[width=16.5cm]{login1.png}
-%}
+\figura{Diagrama de Secuencia: Visualizando Fotografías Usuario.}{
+	\includegraphics[width=17cm]{DiagramaSecuenciaPhotostream.jpg}
+}
+
+En este diagrama de secuencia se busca mostrar el comportamiento del sistema ante eventuales acciones por parte del usuario, en este caso el usuario se encuentra en primera instancia en la vista \textsl{PhotoSteam}, luego al cargar la página en el navegador se recibe la petición desde la vista y se procesa gracias a \textsl{angularJS} mediante los módulos \textsl{PhotoCtl} y \textsl{PhotoFactory} los cuales envían y contactan al \textsl{web service} mediante una petición HTTP. Esta petición la recibe el \textsl{EJB} correspondiente el cual procesa la consulta y entrega la información adecuada que en este caso es  un \textsl{JSON} que contiene la información de las fotografías del usuario. Cabe destacar que este \textsl{JSON} se genera en primera instancia gracias a la comunicación realizada entre el \textsl{EJB} y el \textsl{entity} correspondiente a Foto, y de estos \textsl{entities} con la base de datos.  Luego en caso que existan fotos en la base de datos se entregará la posibilidad al usuario de ver la información detallada de la fotografía . Realizando un proceso de comunicación similar al anterior pero extrayendo nueva información del sistema.
+
+\seccion{Visualizando Álbumes Usuario.}
+
+\figura{Diagrama de Secuencia: Visualizando Álbumes Usuario.}{
+	\includegraphics[width=16.5cm]{DiagramaSecuenciaAlbumesUsuarioParteA.jpg}
+}
+
+\figura{Diagrama de Secuencia: Visualizando Álbumes Usuario.}{
+	\includegraphics[width=16.5cm]{DiagramaSecuenciaAlbumesUsuarioParteB.jpg}
+}
+
+En este diagrama de secuencia se busca mostrar el comportamiento del sistema ante eventuales acciones por parte del usuario, en este caso el usuario se encuentra en primera instancia en la vista Álbumes, luego al cargar la página en el navegador se recibe la petición desde la vista y se procesa gracias a \textsl{angularJS} mediante los módulos \textsl{AlbumCtl} y \textsl{AlbumFactory} los cuales envían y contactan al \textsl{web service} mediante una petición HTTP esta petición la recibe el \textsl{EJB} correspondiente el cual procesa la consulta y entrega la información adecuada que en este caso es un \textsl{JSON} que contiene la información de las fotografías del usuario. Cabe destacar que este \textsl{JSON} se genera en primera instancia gracias a la comunicación realizada entre el \textsl{EJB} y el \textsl{entity} correspondiente a Álbum. Y de estos \textsl{entities} con la base de datos.  Luego en caso que existan álbumes en la base de datos se entregará la posibilidad al usuario de ver las fotografías contenidas en cada álbum. Realizando un proceso de comunicación similar al anterior pero extrayendo nueva información del sistema para cada fotografía perteneciente al álbum seleccionado. Cabe destacar que \textsl{angularJS} se encarga de el recambio de vista en caso de que existan álbumes y fotos en éstos.
+
+
+%-------------------------------------------------------------------------------------
+\capitulo{DICCIONARIO DE DATOS.}
+
+A continuación, se presenta el diccionario de datos, que contendrá y detallará los atributos correspondientes de la base de datos.
+
+\begin{enumerate}
+\item \textbf{ALBUM}: las funcionalidades que se asocian a el agrupamiento de fotografías bajo un nombre y descripción, además se tiene que un álbum pertenece a un usuario.
+
+	\begin{enumerate}
+	\item \textbf{ID\_ALBUM}: toda tabla posee un identificador, este atributo representa esto.
+	\item \textbf{ID\_USUARIO}: como se mencionó anteriormente, un álbum pertenece a un usuario, por lo que este usuario es identificado con este atributo.
+	\item \textbf{NOMBRE}: este atributo es la representación del nombre del álbum, este atributo es otorgado por el usuario que crea éste.
+	\item \textbf{FECHA\_CREADO}: atributo que representa la creación del álbum en una fecha específica.
+	\item \textbf{DESCRIPCION}: atributo que es ingresado por el usuario, donde el usuario puede o no describir el contenido del álbum, por ende este atributo puede ser NULL, es decir puede no existir.
+	\item \textbf{CANT\_FOTO}: este atributo representa la cantidad numérica de las fotografías que están relacionadas al álbum, esta cantidad es modificada a través de un trigger mencionado posteriormente.
+	\item \textbf{URLFOTOALBUM}: cada uno de los álbumes tendrá una foto asociada, aquí las fotografías serán descritas a través de una dirección para así ser posteriormente identificadas.
+		\begin{itemize}
+		\item \textbf{aumentarCantAlbums}: este es un \textsl{trigger}, por el cual se aumenta la cantidad de álbumes del usuario cada vez que se inserte un nuevo álbum de éste.
+		\end{itemize}
+	\end{enumerate}
+	
+\item \textbf{ALBUM\_FOTO}: tabla que es utilizada para relacionar una fotografía con un álbum correspondiente.
+
+	\begin{enumerate}
+	\item \textbf{ID\_ALBUM}: necesita identificar el álbum al que se va agregar una fotografía.
+	\item \textbf{ID\_FOTO}: se necesita saber que fotografía será la que se va agregar al álbum es por esto que se identifica un identificador.
+	\item \textbf{FECHA\_AGREGACION}: a modo de tener claridad y mantener un orden de las fotos con respecto al tiempo real.
+		\begin{itemize}
+		\item \textbf{aumentarCantFotoAlbums}: \textsl{trigger} que es utilizado para poder ir cambiando el atributo CANT\_FOTO del álbum, cada vez que se agregue una relación de una fotografía con un álbum. 
+		\end{itemize}
+	\end{enumerate}
+
+\item \textbf{ALBUM\_PERMISO}: tabla que se utiliza para poder relacionar un permiso con un álbum, pensando en que un álbum posee un permiso correspondiente que puede ser elegido por el usuario.
+
+	\begin{enumerate}
+	\item \textbf{ID\_ALBUM}: se necesita identificar el álbum al que se le agrega el permiso correspondiente.
+	\item \textbf{ID\_PERMISO}: se necesita tener claro cuál es el permiso que se le va a asignar al álbum correspondiente.
+	\end{enumerate}
+	
+\item \textbf{CAMARA}: como se sabe se van a necesitar cierta información de cámaras, para así ser relacionadas con una fotografía, como a la vez también proveer un análisis de las cámaras más utilizadas en la aplicación. 
+
+	\begin{enumerate}
+	\item \textbf{ID\_CAMARA}: se necesita poder identificar las cámaras, para poder evitar que si se quiere acceder a una cámara solo esta tenga el mismo identificador.
+	\item \textbf{MEGAPIXELES}: una cámara posee una calidad de imagen, la cual es evaluada en megapíxeles.
+	\item \textbf{ZOOM}: las cámara poseen cierto acercamiento máximo que pueden realizar, para esto se identifica un zoom que posee una cámara.
+	\item \textbf{URL\_FOTO\_CAMARA}: se desea mostrar una imagen de la cámara para el análisis de éstas, es por esto que se debe tener una dirección asociada a esta imagen.
+	\item \textbf{NOMBRE}: toda cámara posee un nombre para ser identificada, es por esto que esta la existencia de este atributo.
+	\item \textbf{MODELO}: cada una de las cámaras poseen distintos modelos, es por esto que se pueden clasificar por un modelo.
+	\item \textbf{CANT\_FOTOS}: se llevará la cuenta de cuantas fotografías son relacionadas con una cámara, esto para lograr realizar un análisis de éstas.
+	\end{enumerate}
+	
+\item \textbf{CLASIFICACION}: tabla pensada en la utilización de WEKA, es por esto que se deja el espacio pensando en que en nuestro grupo tendremos que recibir un clasificador.
+
+	\begin{enumerate}
+	\item \textbf{ID\_CLASIFICACION}: se necesita identificar una clasificación correspondiente, es por esto que está la existencia de este atributo.
+	\item \textbf{NOMBRE\_CLAS}: pensando en que existirá una etiqueta correspondiente para cada clasificación, es decir, este atributo tendrá el nombre de los tres tipos de clasificación, NEUTRA, POSITIVA o NEGATIVA.
+	\end{enumerate}
+	
+\item \textbf{COMENTARIO\_ALBUM}: tabla utilizada para relacionar un comentario con un álbum, cabe mencionar que este está para el caso de \textsl{bonus}, es decir, solo está pensado en el caso de que alcance el tiempo para implementarlo, es utilizado para la existencia de comentarios a un álbum.
+
+	\begin{enumerate}
+	\item \textbf{ID\_COMENTARIO\_ALB}: se necesita identificar la relación que tendrá el álbum con el comentario.
+	\item \textbf{ID\_ALBUM}: se necesita identificar el álbum con el cual está relacionado el comentario correspondiente.
+	\item \textbf{ID\_CLASIFICACION}: se necesita identificar una clasificación correspondiente del comentario que existe en el álbum.
+	\item \textbf{ID\_USUARIO}: se necesita identificar el usuario que realiza el comentario correspondiente que se está relacionando.
+	\item \textbf{COMENTARIO\_ALB}: se almacena el comentario realizado al álbum correspondiente.
+	\item \textbf{FECHA\_COMENTARIO}: se almacena una fecha correspondiente de cuando fue realizado el comentario.
+	\end{enumerate}
+	
+\item \textbf{COMENTARIO\_FOTO}: cada foto tendrá comentarios asociados, es por esto que existe esta tabla, la cual contendrá el comentario y el usuario que realiza el comentario.
+
+	\begin{enumerate}
+	\item \textbf{ID\_COMENTARIO\_FOTO}: se debe identificar el comentario en la foto, es por esto la existencia de este atributo.
+	\item \textbf{ID\_FOTO}: se necesita identificar la fotografía que posee este comentario.
+	\item \textbf{ID\_CLASIFICACION}: pensando en la implementación de WEKA, se utiliza el identificador de la clasificación que posee el comentario.
+	\item \textbf{ID\_USUARIO}: se necesita saber quién es el usuario que realiza el comentario en la fotografía correspondiente.
+	\item \textbf{COMENTARIO\_FOTO}: se almacena el comentario correspondiente que se realiza.
+	\item \textbf{FECHA\_COMENTARIO\_FOTO}: para manejar el tiempo de la realización del comentario correspondiente.
+	
+		\begin{itemize}
+		\item \textbf{aumentarCantCom}: \textsl{trigger} utilizado para que cada vez que se agregue un comentario a una fotografía se aumente el contador de comentarios con la foto correspondiente.
+		\end{itemize}
+	\end{enumerate}
+	
+\item \textbf{ETIQUETA}: tabla que representa una referencia de un usuario en una fotografía.
+
+	\begin{enumerate}
+	\item \textbf{ID\_USUARIO}: se necesita tener asociado con el identificador del usuario para que este sea referenciado.
+	\item \textbf{ID\_FOTO}: se necesita saber en qué fotografía será referenciado el usuario correspondiente.
+	\end{enumerate}
+	
+\item \textbf{EVENTO}: tabla correspondiente a los eventos recientes, es decir, será utilizada para identificar las actividades recientes que se irán realizando en el sistema.
+
+	\begin{enumerate}
+	\item \textbf{ID\_EVENTO}: se necesita poder identificar los eventos para poder ser utilizados. 
+	\item \textbf{FECHA\_EVENTO}: se necesita mantener un registro de la fecha en que ocurre este evento para así solo mantener los recientes.
+	\item \textbf{ID\_USUARIO}: se necesita saber el usuario involucrado en el evento es por esto que se debe almacenar el ID de éste.
+	\item \textbf{DESCRIPCION}: cada uno de los eventos posee una descripción correspondiente de lo que se hizo, es por esto que se tiene este atributo.
+	\item \textbf{URL\_EVENTO}: para saber una dirección de una fotografía que está asociado el evento.
+	\item \textbf{ID\_FOTO}: finalmente se necesita saber que fotografía es la que posee el evento asociado, es decir, si se comentó una foto se necesita saber que fotografía fue.
+	\end{enumerate}
+	
+\item \textbf{FAVORITO\_ALBUM}: tabla que es utilizada para el caso en que se implemente el bonus comentado anteriormente, donde se puede establecer como favorito un álbum.
+
+	\begin{enumerate}
+	\item \textbf{FECHA\_FAV\_ALB}: en este atributo se desea almacenar la fecha en que se realizó el favorito del álbum.
+	\item \textbf{ID\_USUARIO}: para llevar un manejo de quien realizó el favorito se necesita identificar el usuario a través de su ID.
+	\item \textbf{ID\_ALBUM}: para ir manejando quien es el que posee el favorito, se necesita manejar el ID del álbum correspondiente.
+	\end{enumerate}
+
+\item \textbf{FAVORITO\_FOTO}: tabla utilizada para manejar el favorito de una fotografía.
+
+	\begin{enumerate}
+	\item \textbf{FECHA\_FAV\_FOTO}: se necesita establecer el tiempo en que se hizo favorita la fotografía.
+	\item \textbf{ID\_USUARIO}: se identifica el usuario que le puso favorito a la fotografía correspondiente.
+	\item \textbf{ID\_FOTO}: se identifica la fotografía a la cual se le asignó el favorito correspondiente.
+	
+		\begin{itemize}
+		\item \textbf{aumentarCantFavFoto}: \textsl{trigger} utilizado para aumentar la cantidad de favoritos en una fotografía.
+		\end{itemize}
+	\end{enumerate}
+
+\item \textbf{FOTO}: tabla que es utiizada para manejar toda la información que debe poseer una fotografía, esta tabla es considerada el núcleo de la base de datos, debido a que esta es la que será más utilizada y todas las demás se manejan alrededor de ésta.
+
+	\begin{enumerate}
+	\item \textbf{ID\_FOTO}: cada fotografía será manejada con un identificador, el cual no se puede repetir entre fotografías, es por esto que será auto-incrementable.
+	\item \textbf{ID\_CAMARA}: si se necesita manejar la información de que cámara es la que realizó la fotografía se necesita identificar qué cámara.
+	\item \textbf{ID\_USUARIO}: cada fotografía está asociada a un usuario, es por esto que se debe manejar quien es el usuario a través de su ID.
+	\item \textbf{FECHA\_CARGA}: se necesita saber en qué fecha se subió la fotografía, para así manejar el tema de las fotografías recientes.
+	\item \textbf{FECHA\_TOMADA}: se sabrá además de la cámara la fecha en que fue tomada, eso sí  la cámara puede establecerlo.
+	\item \textbf{VISTAS}: se manejará la cantidad de visitas que tiene cada fotografía en el sistema.
+	\item \textbf{TITULO}: cada fotografía tendrá un título que será ingresada por el usuario que realizó la carga de ésta.
+	\item \textbf{DESCRIPCION}: así como un título además la fotografía posee una descripción que también será cargada por el usuario.
+	\item \textbf{CANT\_FAVOR}: Cada fotografía tendrá cierta cantidad de favoritos, esto será manejado a través de un \textsl{trigger}.
+	\item \textbf{URL}: cada fotografía tendrá asociada una dirección para la ubicación de esta y así poder visualizarla.
+	\item \textbf{FORMATO}: cada una de las fotografías pueden manejar un formato diferente, el cual por ejemplo puede ser JPEG.
+	\item \textbf{PUNTO\_LUGAR}: como se desea manejar una ubicación si el usuario lo desea se almacenará un punto en particular de ubicación de la fotografía.
+	\item \textbf{CANT\_COM}: se maneja la cantidad de comentarios que posee la fotografía, esto es manejado a través de un \textsl{trigger}.
+	
+		\begin{itemize}
+		\item \textbf{aumentarCantFotoUsuario}: \textsl{trigger} utilizado para aumentar la cantidad de fotografías que posee un usuario, cada vez que su id corresponda con el de la fotografía se aumenta el contador.
+		\end{itemize}
+	\end{enumerate}
+
+\item \textbf{FOTO\_PERMISO}: cada una de las fotografías posee un permiso correspondiente que el usuario le otorga dentro de los posibles.
+
+	\begin{enumerate}
+	\item \textbf{ID\_FOTO}: para otorgar un permiso, se debe identificar la fotografía a la cual se está asignando un permiso.
+	\item \textbf{ID\_PERMISO}: para asignar un permiso se debe identificar el permiso correspondiente de la tabla permisos.
+	\end{enumerate}
+
+\item \textbf{LUGAR}: para le manejo de los mapas se tienen asociado una tabla que contendrá los lugares posibles de búsqueda.
+
+	\begin{enumerate}
+	\item \textbf{ID\_LUGAR}: identificador del lugar que se desea buscar.
+	\item \textbf{POLYGON}: cada uno de los lugares será representado con un polígono correspondiente, el cual consta de ciertas coordenadas.
+	\item \textbf{NOMBRE}: cada uno de los lugares representados en el mapa para la búsqueda poseen un nombre, como por ejemplo Santiago.
+	\end{enumerate}
+
+\item \textbf{PERMISO}: tabla utilizada para almacenar los tipos de permisos posibles que pueden tener las fotografías y si es posible los álbumes.
+
+	\begin{enumerate}
+	 \item \textbf{ID\_PERMISO}: se tiene un identificador del permiso correspondiente.
+	 \item \textbf{COMPARTIR}: booleano correspondiente para permitir compartir la fotografía o álbum.
+	 \item \textbf{COMENTAR}: booleano correspondiente para permitir comentar la fotografía o álbum.
+	 \item \textbf{DESCARGAR}: booleano correspondiente para permitir descargar la fotografía o álbum.
+	 \end{enumerate}
+	 
+\item \textbf{TAG}: como se desea la implementación de Tag, se necesita una tabla que posee algunos de éstos.
+
+	\begin{enumerate}
+	 \item \textbf{ID\_TAG}: se debe identificar cada uno de los posibles tags que posee la aplicación.
+	 \item \textbf{NOMBRE\_TAG}: cada uno de éstos tendrá un nombre correspondiente al tag en sí.
+	 \end{enumerate} 
+
+\item \textbf{TAG\_FOTO}: tabla utilizada para asociar un tag a una fotografía en particular.
+
+	\begin{enumerate}
+	\item \textbf{ID\_TAG}: se debe identificar el tag que se está utilizando.
+	\item \textbf{ID\_FOTO}: se debe determinar en qué fotografía se está otorgando el tag correspondiente.
+	\end{enumerate}
+	
+\item \textbf{TAG\_USUARIO}: tabla utilizada para relacionar un tag con un usuario en particular que utiliza este tag.
+
+	\begin{enumerate}
+	\item \textbf{ID\_USUARIO}: se necesita identificar el usuario que hizo la utilización del tag.
+	\item \textbf{ID\_TAG}: se necesita identificar el tag correspondiente.
+	\end{enumerate}
+	
+\item \textbf{USUARIO}: se tiene una tabla correspondiente a todos los usuario que van a estar en el sistema.
+
+	\begin{enumerate}
+	\item \textbf{ID\_USUARIO}: se necesita identificar con un ID diferente a cada uno de estos usuarios.
+	\item \textbf{ALIAS}: se tiene un nombre de usuario que posee cada uno de estos, el cual debe ser diferente al de todos.
+	\item \textbf{NOMBREREAL}: se debe almacenar el nombre real del usuario.
+	\item \textbf{CONTRASEÑA}: cada uno de los usuarios posee una contraseña correspondiente para su alias.
+	\item \textbf{FECHA\_CREACION}: se almacena la fecha en que el usuario fue ingresado en el sistema.
+	\item \textbf{APELLIDO}: usuario en el momento de registro debe almacenar su apellido.
+	\item \textbf{CORREO}: cada uno de los usuarios debe ingresar a través de su correo al sistema, si que debe ser almacenado este.
+	\item \textbf{CANT\_FOTOS}: cada usuario posee una cantidad de fotos subidas en el sistema, para esta funcionalidad se utiliza un \textsl{trigger} correspondiente.
+	\item \textbf{CANT\_ALBUM}: cada usuario posee una cantidad de álbumes creados en el sistema.
+	\item \textbf{CANT\_SEGUIDORES}: cada usuario puede ser seguido por otros usuarios, es por esto que se maneja la cantidad de seguidores que posee.
+	\item \textbf{CANT\_SEGUIDOS}: además de cada uno de los seguidores se posee a cuantos usuarios sigue éste.
+	\item \textbf{URL\_PERFIL}: se necesita la dirección de la imagen en el sistema para poder asociarle una foto de perfil.
+	\item \textbf{URL\_AVATAR}: cada uno de los usuarios posee una fotografía de avatar, es por esto que se maneja una dirección de la fotografía.
+	\item \textbf{DESCRIPCION}: cada uno de los usuarios puede redactar una descripción correspondiente a ellos.
+	\end{enumerate}
+	
+\item \textbf{USUARIO\_USUARIO}: como se menciona con anterioridad, los usuarios pueden seguirse esta tabla manejará esta información.
+
+	\begin{enumerate}
+	\item \textbf{ID\_USUARIO}: identificador del usuario que está siguiendo a otro usuario.
+	\item \textbf{ID\_USUARIOFOLLOW}: identificador del usuario al cual se va a seguir.
+	\item \textbf{FECHA\_SEGUIDOS}: se maneja la fecha en que se empieza a seguir a otro usuario.
+	
+		\begin{itemize}
+		\item \textbf{aumentarCantSeguidores}: \textsl{trigger} para modificar cada vez que corresponda la cantidad de seguidores de un usuario que correponda.
+		\item \textbf{aumentarCantSeguidos}: \textsl{trigger} para modificar cada vez que corresponda la cantidad de seguidos de un usuario que corresponda.
+		\end{itemize}
+	\end{enumerate}
+
+\end{enumerate}
 
 %-------------------------------------------------------------------------------------
 \capitulo{DETALLE DE CASOS DE USO IMPLEMENTADOS.}
@@ -469,10 +807,9 @@ Cada miembro del grupo tendrá acceso a todos los repositorios para fomentar la 
 
 \seccion{COMUNICACIÓN, AVANCES Y BURNDOWN.}
 
-En la segunda reunión de planificación realizada, se determinó que el segundo\textsl{sprint} duraría hasta el 16 de Mayo del 2015. Además se acordó las horas de trabajo diarias que se podían dedicar a la realización del proyecto, se estimó que cada integrante del grupo podría dedicar a lo máximo 1.5 hrs al dia para el proyecto. Luego se definieron las tareas para que estas se pudieran realizar en un tiempo cercano al de trabajo diario estimado y posteriormente se estimó el tiempo que se demoraría cada tarea en estar realizada.
+En la reunión de planificación realizada, se determinó que el segundo \textsl{Sprint} duraría hasta el 6 de Junio del 2015. Además se acordó las horas de trabajo diarias que se podían dedicar a la realización del proyecto, se estimó que cada integrante del grupo podría dedicar a lo máximo 1.5 hrs al dia para el proyecto. Luego se definieron las tareas para que estas se pudieran realizar en un tiempo cercano al de trabajo diario estimado, luego se estimó cada tarea en estar realizada.
 
-Para la realización de la segunda entrega el grupo optó por varios canales de comunicación para manejar las relaciones entre los participantes, por lo tanto se determinaron distintas tecnologías para objetivos específicos, los canales usados para comunicarse entre el grupo fueron los siguientes:
-
+Para la realización de la tercera entrega el grupo optó por varios canales de comunicación para manejar las relaciones entre los participantes, por lo tanto se determinaron distintas tecnologías para objetivos específicos, los canales usados para comunicarse entre el grupo fueron los siguientes:
 
 \begin{itemize}
 	\item Grupo \textbf{\textsl{WhatsApp}}, con el fin de conversar inmediatamente y de forma rápida temas relacionados con el proyecto, principalmente se utilizó para dudas cortas y compartir pequeñas opiniones del proyecto.
@@ -484,14 +821,15 @@ Para la realización de la segunda entrega el grupo optó por varios canales de 
 
 \newpage
 
-A continuación se presentan las tareas definidas y los tiempos estimados.
+A continuación se presentan las tareas definidas y las estimaciones. Las estimaciones se realizaron con la metodología Pocket Card, utilizando la siguiente escala de medidas 0 - 0.5- 1- 2- 3- 5- 8- 13- 21.
+
 
 \figura{Tareas 1-21}{
 	\includegraphics[width=15cm]{estimacionTareas1.png}
 }
 
 
-Ahora la cantidad de horas de trabajos estimadas son 31 hrs, Las horas de trabajo real fueron 33 hrs , notar que las horas reales trabajadas superaron las horas estimadas en 2 hrs aprox, esto quiere decir que las tareas se estimaron correctamente en su mayoría, ya que este margen de error fue relativamente bajo. Tiempo promedio por tarea fue de 1.48 hrs. Otros datos que se obtiene al analizar lo anterior son:
+Ahora la cantidad estimada de peso por todas las tareas fue de 75 unidades de trabajo (trabajo realizado), Las unidades de trabajo real total fueron 92 (trabajo realizado), notar que los pesos totales reales trabajados superaron los pesos totales estimadas en 17 unidades de trabajo.  El margen de error fue relativamente alto ya que la escala para la estimación tomaba saltos demasiado grandes entre un peso y otro. El peso promedio por tarea fue de 7.08 unidades de trabajo.Otros datos que se obtiene al analizar lo anterior son:
 
 \begin{itemize}
 	\item Estimación Trabajo Diario Grupo: 7.5 
@@ -500,9 +838,8 @@ Ahora la cantidad de horas de trabajos estimadas son 31 hrs, Las horas de trabaj
 	\item Trabajo por dia promedio ideal 2.59 
 \end{itemize}
 
-Cabe señalar que si se trabajara de manera ideal, sobraría  tiempo equivalente a $187.5hrs - 31hrs = 156,5hrs$. 
+A continuación se presentan los gráficos \textsl{BurnDown} y \textsl{BurnUP} con el fin de señalar la forma en que se trabajó a lo largo del \textsl{Sprint}.
 
-A continuación se presentan los gráficos BurnDown y BurnUP con el fin de señalar la forma en que se trabajó a lo largo del Sprint.
 
 \figura{Gráfico Burnup}{
 	\includegraphics[width=15cm]{burnUp.png}
@@ -513,9 +850,10 @@ A continuación se presentan los gráficos BurnDown y BurnUP con el fin de seña
 	\includegraphics[width=15cm]{burnDown.png}
 }
 
-Como se aprecia en la imagen, se observa que en determinados periodos se trabajó una mayor cantidad, si bien alcanzamos a realizar la mitad del trabajo estimado a la fecha 8 de Mayo, se comenzó a trabajar en el proyecto varios días después de la planificación del \textsl{sprint}, por estos motivos se le solicitó al profesor mover la fecha de evaluación de la entrega de diseño arquitectural. Luego desde el 6 al 12 de mayo se comenzó a trabajar con gran rapidez, como se aprecia se terminó de ocupar las otras disponibles el 11 de mayo, el resto de los días si bien se trabajo, pero se trabajo tiempo superior al estimado.
+Como se aprecia en la imagen, se observa que en determinados periodos se trabajó una mayor cantidad, se alcanzó a realizar la mitad del trabajo estimado en 5 de Junio, esto sucede principalmente por la falta de atomicidad de las tareas y los procesos que lleva cada tarea, ya que pasa por un estado intermedio desde \textsl{estoy haciendo} a \textsl{finalizado} hay un estado de revisión donde los miembros del grupo se encargan de revisar el trabajo realizado por los otros compañeros del equipo. Luego desde el 30 de mayo en adelante se comenzó a trabajar con gran rapidez. Cabe destacar que los gráficos no se tocan ya que faltan tareas por concluir que fueron las tareas correspondientes a la implementación de los casos de uso.
 
-Cabe destacar que para la próxima entrega se estimaron las tareas con \textsl{PokerPlaning} y se utilizará otra plataforma para realizar un análisis de datos, denominada \textsl{OllertApp}, la que facilitará el análisis de manera directa con lo realizado en \textsl{Trello}.
+Cabe destacar que para esta entrega se estimaron las tareas con \textsl{PokerPlaning} y se utilizó una plataforma para realizar en análisis de datos, denominada \textsl{ollertApp}, la cual facilita el análisis de manera directa con lo realizado en \textsl{trello}.
+
 
 %-------------------------------------------------------------------------------------
 \capitulo{OBSERVACIONES.}
@@ -525,29 +863,24 @@ En esta ocasión no se indicaron observaciones pertinentes al contenido del info
 %-------------------------------------------------------------------------------------
 \capitulonn{CONCLUSIONES.}
 
-Para la plataforma \textsl{BitPhoto}, es esencial diseñar correctamente el proyecto desde sus etapas más tempranas, es por eso que el Diseño Arquitectural es vital para el desarrollo y despliegue posterior de la aplicación.
+Se puede finalizar este informe, acotando que esta entrega enseña un acercamiento más profundo y en detalle de la arquitectura de la aplicación \textsl{BitPhoto}. A través de los diagramas de clases y secuencia, junto con los casos de uso se permitió detallar la arquitectura de la aplicación para su posterior implementación. Se agregó también el diccionario de datos que incluye las definiciones básicas y terminología de los elementos de la plataforma.
 
-El modelo 4+1 vistas y el Cubo 3D Suntone ayudan enormemente a llevar la visión de los arquitectos de software hacia los programadores, diseñadores y demás \textsl{stakeholders} de la aplicacion. En el contexto de la Ingeniería de Software resulta esencial comunicar correctamente la conceptualización de las ideas dentro del equipo de trabajo, para evitar inconsistencias en el producto final.
+Sobre la implementación de los Casos de Uso propuestos para esta entrega, no se pudieron llevar a cabo debido a la alta complejidad que suponía completarlos (además de la baja cantidad de horas-hombre disponibles para implementación), este alcance permitirá al grupo de desarrollo tener más experiencia a la hora de estimar a futuro las características a implementar en cada hito del proyecto, poniendo metas más realistas.
 
-En esta entrega también se definen las tecnologías y sus versiones respectivas a utilizar dentro de la plataforma. Una clara definición del software y hardware que forman la plataforma condiciona la forma de trabajo, pero a la vez permite que los desarrolladores exploten de mejor manera los recursos tecnológicos disponibles.
+El resto de las tareas y objetivos pudo ser completado a cabalidad. Si bien las limitantes de tiempo propias de cada integrante del equipo impidieron tener una curva de \textsl{Burndown} ideal, el hecho de usar \textsl{Planning Poker} para la estimación de tareas y la organización colectiva a través de las vías de comunicación ya descritas favorecieron el cumplimiento del hito en los plazos indicados.
 
-Como siempre, la metodología ágil del proyecto implica constante comunicación entre los miembros del equipo desarrollador de \textsl{BitPhoto}. Llevando un control de las tareas desarrolladas se permite vigilar las cargas de trabajo.
-
-Finalmente, se puede concluir que la plataforma \textsl{BitPhoto} pasó la etapa de Diseño Arquitectural, para iniciar posteriormente la etapa de Diseño Detallado. Los errores metodológicos a la hora de generar los esquemas y diagramas fueron debidamente corregidos.
 
 
 %-------------------------------------------------------------------------------------
 
 \capitulonn{BIBLIOGRAFÍA.}
 
-[1] Philippe Kruchten. (Noviembre, 1995). En Planos Arquitectónicos: : El Modelo de “4+1” Vistas de la Arquitectura del Software(16). IEEE Software. 
+[1] Santiago Ceria. Ingeniería de Software I, Casos de Uso. 05/Junio/2015, de Universidad de Buenos Aires 
+Sitio web: http://www-2.dc.uba.ar/materias/isoft1/2001\_2/apuntes/CasosDeUso.pdf
 
-Sitio Web: http://cic.puj.edu.co/wiki/lib/exe/fetch.php?media=materias:modelo4\_1.pdf
 
-[2] SUNTONE ARCHITECTURE METHODOLOGY A 3-DIMENSIONAL APPROACH TO ARCHITECTURAL DESIGN. 11-Mayo-2015, de Sun MicroSystems 
-
-Sitio web: http://rieck.dyndns.org/architecture/suntoneam\_wp\_5.24.pdf?version=1
-
+[2] Modelo de Clases. 05/Junio/2015, de Universidad de Chile 
+Sitio web: http://users.dcc.uchile.cl/~psalinas/uml/modelo.html
 
 
 \end{document}
